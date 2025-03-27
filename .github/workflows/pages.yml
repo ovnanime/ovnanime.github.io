@@ -1,30 +1,36 @@
-name: Deploy to GitHub Pages
+name: Build and deploy Jekyll site
 
 on:
   push:
-    branches: ["main"]  # Или ваша основная ветка
+    branches: ["main"]
 
-# 🔥 Критически важные разрешения:
 permissions:
   contents: read
   pages: write
-  id-token: write  # Добавьте эту строку!
+  id-token: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'
           bundler-cache: true
-          
+
+      - name: Install dependencies
+        run: |
+          bundle config path vendor/bundle
+          bundle install
+
       - name: Build with Jekyll
-        run: bundle exec jekyll build --destination ./_site
-        
+        run: |
+          bundle exec jekyll build --trace --verbose
+          ls -la _site
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
