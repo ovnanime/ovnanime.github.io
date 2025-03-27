@@ -12,6 +12,8 @@ body {
 a {
   color: #C0C0C0;
   text-decoration: none;
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
   transition: color 0.3s;
 }
 
@@ -74,6 +76,8 @@ header {
   width: 100%;
   background-color: #fff;
   border-radius: 3px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
@@ -198,8 +202,10 @@ footer p {
     height: 100vh;
     background-color: #131313;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    -webkit-transition: right 0.3s ease;
+    -moz-transition: right 0.3s ease;
     transition: right 0.3s ease;
     z-index: 99;
     padding-top: 70px;
@@ -230,6 +236,8 @@ footer p {
   }
   
   body.menu-open .menu-toggle span:nth-child(1) {
+    -webkit-transform: translateY(9px) rotate(45deg);
+    -moz-transform: translateY(9px) rotate(45deg);
     transform: translateY(9px) rotate(45deg);
   }
   
@@ -238,6 +246,8 @@ footer p {
   }
   
   body.menu-open .menu-toggle span:nth-child(3) {
+    -webkit-transform: translateY(-9px) rotate(-45deg);
+    -moz-transform: translateY(-9px) rotate(-45deg);
     transform: translateY(-9px) rotate(-45deg);
   }
 }
