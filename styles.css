@@ -1,0 +1,330 @@
+/* Основные стили для всего тела страницы */
+body {
+  font-family: Arial, sans-serif; /* Шрифт для всей страницы */
+  margin: 0; /* Убираем внешние отступы */
+  padding: 0; /* Убираем внутренние отступы */
+  background-color: #131313; /* Темный фон страницы */
+  color: #fff; /* Белый цвет текста */
+}
+
+/* Стили для всех ссылок на сайте */
+a {
+  color: #C0C0C0; /* Мягкий голубой цвет */
+  text-decoration: none; /* Убираем подчеркивание */
+  transition: color 0.3s; /* Плавное изменение цвета при наведении */
+}
+
+/* Стили для ссылок при наведении */
+a:hover {
+  color: #ff6f61; /* Цвет при наведении (например, оранжевый) */
+}
+
+/* Стили для шапки (header) */
+header {
+  background-color: #131313; /* Темный фон шапки */
+  color: #fff; /* Белый цвет текста в шапке */
+  padding: 15px 20px; /* Внутренние отступы: 10px сверху и снизу, 20px слева и справа */
+}
+
+/* Контейнер для содержимого шапки */
+.header-content {
+  display: flex; /* Используем flexbox для выравнивания элементов */
+  justify-content: space-between; /* Распределяем пространство между элементами */
+  align-items: center; /* Выравниваем элементы по вертикали по центру */
+  max-width: 1200px; /* Максимальная ширина контейнера */
+  margin: 0 auto; /* Центрирование контейнера по горизонтали */
+}
+
+/* Стили для логотипа и текста */
+.logo {
+  display: flex; /* Используем flexbox для выравнивания логотипа и текста */
+  align-items: center; /* Выравниваем элементы по вертикали по центру */
+}
+
+/* Стили для изображения логотипа */
+.logo img {
+  height: 40px; /* Высота логотипа */
+  margin-right: 10px; /* Отступ справа от логотипа */
+}
+
+/* Стили для текста рядом с логотипом */
+.logo span {
+  font-size: 20px; /* Размер шрифта */
+  font-weight: bold; /* Жирный шрифт */
+}
+
+/* Стили для навигационного меню */
+nav {
+  display: flex; /* Используем flexbox для выравнивания элементов меню */
+  align-items: center; /* Выравниваем элементы по вертикали по центру */
+}
+
+/* Стили для списка меню */
+.menu {
+  display: flex; /* Используем flexbox для горизонтального расположения пунктов меню */
+  list-style-type: none; /* Убираем маркеры списка */
+  padding: 0; /* Убираем внутренние отступы */
+  margin: 0; /* Убираем внешние отступы */
+}
+
+/* Стили для каждого пункта меню */
+.menu li {
+  margin: 0 15px; /* Отступы между пунктами меню: 0 сверху и снизу, 15px слева и справа */
+}
+
+/* Стили для ссылок в меню */
+.menu li a {
+  color: #fff; /* Белый цвет текста */
+  text-decoration: none; /* Убираем подчеркивание у ссылок */
+  font-size: 18px; /* Размер шрифта */
+  padding: 10px 15px; /* Внутренние отступы: 10px сверху и снизу, 15px слева и справа */
+  /* transition: transform 0.3s; Плавное увеличение при наведении */
+}
+
+/* Стили для ссылок при наведении */
+.menu li a:hover {
+  background-color: #131313; /* Темный фон при наведении */
+  border-radius: 5px; /* Закругленные углы */
+}
+
+/* Стили для обложки (шапки) */
+.cover {
+  width: 100%; /* Ширина на всю страницу */
+  overflow: hidden; /* Скрываем выходящие за пределы элементы */
+}
+
+.cover img {
+  width: 100%; /* Ширина изображения на всю ширину контейнера */
+  height: auto; /* Автоматическая высота для сохранения пропорций */
+  display: block; /* Убираем лишние отступы */
+}
+
+/* Стили для основного содержимого страницы */
+main {
+  padding: 20px; /* Внутренние отступы */
+  max-width: 1000px; /* Максимальная ширина контейнера */
+  margin: 0 auto; /* Центрирование контейнера по горизонтали */
+}
+
+
+/* Стили для заголовков разделов */
+h1 {
+  text-align: center; /* Выравнивание текста по центру */
+  font-size: 30px; /* Увеличенный размер шрифта */
+  margin-bottom: 20px; /* Отступ снизу */
+  color: #ffffff; /* Цвет заголовка (например, оранжевый) */
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+
+/* Стили для раздела "Дубляж" */
+#dubbing {
+  margin-bottom: 40px; /* Отступ снизу */
+}
+
+/* Сетка для постеров */
+.dubbing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+  gap: 10px; /* Расстояние между элементами */
+  justify-content: center; /* Центрирование по горизонтали */
+}
+
+/* Стили для каждого элемента в сетке */
+.dubbing-item {
+  text-align: center; /* Выравнивание текста по центру */
+}
+
+/* Стили для постеров */
+.dubbing-item img {
+  width: 90%; /* Ширина постера на всю колонку */
+  height: auto; /* Автоматическая высота */
+  border-radius: 0px; /* Закругленные углы */
+  /* transition: transform 0.3s; Плавное увеличение при наведении */
+}
+
+/* Эффект при наведении на постер */
+.dubbing-item img:hover {
+  /*transform: scale(1.05); Увеличение постера */
+}
+
+/* Стили для названий под постерами */
+.dubbing-item p {
+  margin-top: 10px; /* Отступ сверху */
+  font-size: 18px; /* Размер шрифта */
+  color: #fff; /* Белый цвет текста */
+}
+
+
+/* Стили для раздела "Закадровая озвучка" */
+#voiceover {
+  margin-bottom: 40px; /* Отступ снизу */
+}
+
+/* Сетка для постеров закадровой озвучки */
+.voiceover-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+  gap: 10px; /* Расстояние между элементами */
+  justify-content: center; /* Центрирование по горизонтали */
+}
+
+/* Стили для каждого элемента в сетке закадровой озвучки */
+.voiceover-item {
+  text-align: center; /* Выравнивание текста по центру */
+}
+
+/* Стили для постеров закадровой озвучки */
+.voiceover-item img {
+  width: 90%; /* Ширина постера на всю колонку */
+  height: auto; /* Автоматическая высота */
+  border-radius: 0px; /* Закругленные углы */
+  /* transition: transform 0.3s; Плавное увеличение при наведении */
+}
+
+/* Эффект при наведении на постер закадровой озвучки */
+.voiceover-item img:hover {
+  /*transform: scale(1.05); Увеличение постера */
+}
+
+/* Стили для названий под постерами закадровой озвучки */
+.voiceover-item p {
+  margin-top: 10px; /* Отступ сверху */
+  font-size: 18px; /* Размер шрифта */
+  color: #fff; /* Белый цвет текста */
+}
+
+
+/* Стили для подвала (footer) */
+footer {
+  background-color: #131313; /* Темный фон подвала */
+  color: #fff; /* Белый цвет текста */
+  text-align: center; /* Выравнивание текста по центру */
+  padding: 10px; /* Внутренние отступы */
+  bottom: 0; /* Прижимаем подвал к нижней части страницы */
+  width: 100%; /* Ширина подвала на всю страницу */
+  font-size: 16px; /* Размер шрифта */
+}
+
+
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .header-content {
+    padding: 10px 15px;
+  }
+
+  .logo img {
+    height: 35px;
+  }
+
+  .logo span {
+    font-size: 18px;
+  }
+
+  .menu li {
+    margin: 0 10px;
+  }
+
+  .menu li a {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+
+  h1 {
+    font-size: 26px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .dubbing-grid,
+  .voiceover-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  .dubbing-item img,
+  .voiceover-item img {
+    width: 95%;
+  }
+
+  .dubbing-item p,
+  .voiceover-item p {
+    font-size: 16px;
+  }
+
+  main {
+    padding: 15px;
+    max-width: 90%;
+  }
+}
+
+		
+		
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    padding: 10px 0;
+  }
+
+  .logo {
+    margin-bottom: 15px;
+  }
+
+  .logo img {
+    height: 32px;
+	width: 32px;
+  }
+
+  .logo span {
+    font-size: 18px;
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  .menu {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .menu li {
+    margin: 5px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu li a {
+    display: block;
+    padding: 8px 0;
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .dubbing-grid,
+  .voiceover-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dubbing-item img {
+    width: 90%;
+    height: auto;
+    border-radius: 0px;
+  }
+
+  .dubbing-item p,
+  .voiceover-item p {
+    font-size: 16px;
+  }
+
+  main {
+    padding: 10px;
+  }
+}
