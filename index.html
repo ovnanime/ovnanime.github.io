@@ -83,7 +83,7 @@
   <header>
     <div class="header-content">
       <div class="logo">
-        <img src="./assets/logo.png" alt="Логотип">
+        <img src="./assets/logo.png" alt="Логотип" width="40" height="40">
         <span>Объект всеобщей ненависти</span>
       </div>
       <nav>
@@ -97,9 +97,8 @@
     </div>
   </header>
 
-  <!-- Обложка (шапка) -->
   <div class="cover">
-    <img src="./assets/cover.png" alt="Обложка">
+    <img src="./assets/cover.png" alt="Обложка" width="1200" height="400" loading="lazy">
   </div>
 
   <main>
@@ -225,31 +224,5 @@
     <p>В случаях нарушения авторских прав - обращайтесь на почту: <a href="mailto:support@ovnanime.ru">support@ovnanime.ru</a></p>
     <p>&copy; 2023 — 2025 • Объект всеобщей ненависти</p>
   </footer>
-  
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.createElement('div');
-    menuToggle.className = 'menu-toggle';
-    menuToggle.innerHTML = '<span></span><span></span><span></span>';
-    
-    const headerContent = document.querySelector('.header-content');
-    headerContent.appendChild(menuToggle);
-    
-    menuToggle.addEventListener('click', function() {
-      document.body.classList.toggle('menu-open');
-    });
-    
-    // Закрытие меню при клике на пункт
-    const menuItems = document.querySelectorAll('.menu li a');
-    menuItems.forEach(item => {
-      item.addEventListener('click', function() {
-        if (window.innerWidth <= 768) {
-          document.body.classList.remove('menu-open');
-        }
-      });
-    });
-  });
-</script>
-  
 </body>
 </html>
