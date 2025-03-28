@@ -1,0 +1,648 @@
+/* Основные стили для всего тела страницы */
+body {
+  font-family: Arial, sans-serif; /* Шрифт для всей страницы */
+  margin: 0; /* Убираем внешние отступы */
+  padding: 0; /* Убираем внутренние отступы */
+  background-color: #131313; /* Темный фон страницы */
+  color: #fff; /* Белый цвет текста */
+}
+
+/* Стили для всех ссылок на сайте */
+a {
+  color: #C0C0C0; /* Мягкий голубой цвет */
+  text-decoration: none; /* Убираем подчеркивание */
+  transition: color 0.3s; /* Плавное изменение цвета при наведении */
+}
+
+/* Стили для ссылок при наведении */
+a:hover {
+  color: #ff6f61; /* Цвет при наведении (например, оранжевый) */
+}
+
+/* Стили для шапки (header) */
+header {
+  background-color: #131313; /* Темный фон шапки */
+  color: #fff; /* Белый цвет текста в шапке */
+  padding: 15px 20px; /* Внутренние отступы: 10px сверху и снизу, 20px слева и справа */
+}
+
+/* Контейнер для содержимого шапки */
+.header-content {
+  display: flex; /* Используем flexbox для выравнивания элементов */
+  justify-content: space-between; /* Распределяем пространство между элементами */
+  align-items: center; /* Выравниваем элементы по вертикали по центру */
+  max-width: 1200px; /* Максимальная ширина контейнера */
+  margin: 0 auto; /* Центрирование контейнера по горизонтали */
+}
+
+/* Стили для логотипа и текста */
+.logo {
+  display: flex; /* Используем flexbox для выравнивания логотипа и текста */
+  align-items: center; /* Выравниваем элементы по вертикали по центру */
+}
+
+/* Стили для изображения логотипа */
+.logo img {
+  height: 40px; /* Высота логотипа */
+  margin-right: 10px; /* Отступ справа от логотипа */
+}
+
+/* Стили для текста рядом с логотипом */
+.logo span {
+  font-size: 20px; /* Размер шрифта */
+  font-weight: bold; /* Жирный шрифт */
+}
+
+/* Стили для навигационного меню */
+nav {
+  display: flex; /* Используем flexbox для выравнивания элементов меню */
+  align-items: center; /* Выравниваем элементы по вертикали по центру */
+}
+
+/* Стили для списка меню */
+.menu {
+  display: flex; /* Используем flexbox для горизонтального расположения пунктов меню */
+  list-style-type: none; /* Убираем маркеры списка */
+  padding: 0; /* Убираем внутренние отступы */
+  margin: 0; /* Убираем внешние отступы */
+}
+
+/* Стили для каждого пункта меню */
+.menu li {
+  margin: 0 15px; /* Отступы между пунктами меню: 0 сверху и снизу, 15px слева и справа */
+}
+
+/* Стили для ссылок в меню */
+.menu li a {
+  color: #fff; /* Белый цвет текста */
+  text-decoration: none; /* Убираем подчеркивание у ссылок */
+  font-size: 18px; /* Размер шрифта */
+  padding: 10px 15px; /* Внутренние отступы: 10px сверху и снизу, 15px слева и справа */
+  /* transition: transform 0.3s; Плавное увеличение при наведении */
+}
+
+/* Стили для ссылок при наведении */
+.menu li a:hover {
+  background-color: #131313; /* Темный фон при наведении */
+  border-radius: 5px; /* Закругленные углы */
+}
+
+/* Стили для обложки (шапки) */
+.cover {
+  width: 100%; /* Ширина на всю страницу */
+  overflow: hidden; /* Скрываем выходящие за пределы элементы */
+}
+
+.cover img {
+  width: 100%; /* Ширина изображения на всю ширину контейнера */
+  height: auto; /* Автоматическая высота для сохранения пропорций */
+  display: block; /* Убираем лишние отступы */
+}
+
+/* Стили для основного содержимого страницы */
+main {
+  padding: 20px; /* Внутренние отступы */
+  max-width: 1000px; /* Максимальная ширина контейнера */
+  margin: 0 auto; /* Центрирование контейнера по горизонтали */
+}
+
+
+/* Стили для заголовков разделов */
+h1 {
+  text-align: center; /* Выравнивание текста по центру */
+  font-size: 30px; /* Увеличенный размер шрифта */
+  margin-bottom: 20px; /* Отступ снизу */
+  color: #ffffff; /* Цвет заголовка (например, оранжевый) */
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+
+/* Стили для раздела "Дубляж" */
+#dubbing {
+  margin-bottom: 40px; /* Отступ снизу */
+}
+
+/* Сетка для постеров */
+.dubbing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+  gap: 10px; /* Расстояние между элементами */
+  justify-content: center; /* Центрирование по горизонтали */
+}
+
+/* Стили для каждого элемента в сетке */
+.dubbing-item {
+  text-align: center; /* Выравнивание текста по центру */
+}
+
+/* Стили для постеров */
+.dubbing-item img {
+  width: 90%; /* Ширина постера на всю колонку */
+  height: auto; /* Автоматическая высота */
+  border-radius: 0px; /* Закругленные углы */
+  /* transition: transform 0.3s; Плавное увеличение при наведении */
+}
+
+/* Эффект при наведении на постер */
+.dubbing-item img:hover {
+  /*transform: scale(1.05); Увеличение постера */
+}
+
+/* Стили для названий под постерами */
+.dubbing-item p {
+  margin-top: 10px; /* Отступ сверху */
+  font-size: 18px; /* Размер шрифта */
+  color: #fff; /* Белый цвет текста */
+}
+
+
+/* Стили для раздела "Закадровая озвучка" */
+#voiceover {
+  margin-bottom: 40px; /* Отступ снизу */
+}
+
+/* Сетка для постеров закадровой озвучки */
+.voiceover-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+  gap: 10px; /* Расстояние между элементами */
+  justify-content: center; /* Центрирование по горизонтали */
+}
+
+/* Стили для каждого элемента в сетке закадровой озвучки */
+.voiceover-item {
+  text-align: center; /* Выравнивание текста по центру */
+}
+
+/* Стили для постеров закадровой озвучки */
+.voiceover-item img {
+  width: 90%; /* Ширина постера на всю колонку */
+  height: auto; /* Автоматическая высота */
+  border-radius: 0px; /* Закругленные углы */
+  /* transition: transform 0.3s; Плавное увеличение при наведении */
+}
+
+/* Эффект при наведении на постер закадровой озвучки */
+.voiceover-item img:hover {
+  /*transform: scale(1.05); Увеличение постера */
+}
+
+/* Стили для названий под постерами закадровой озвучки */
+.voiceover-item p {
+  margin-top: 10px; /* Отступ сверху */
+  font-size: 18px; /* Размер шрифта */
+  color: #fff; /* Белый цвет текста */
+}
+
+
+/* Стили для подвала (footer) */
+footer {
+  background-color: #131313; /* Темный фон подвала */
+  color: #fff; /* Белый цвет текста */
+  text-align: center; /* Выравнивание текста по центру */
+  padding: 10px; /* Внутренние отступы */
+  bottom: 0; /* Прижимаем подвал к нижней части страницы */
+  width: 100%; /* Ширина подвала на всю страницу */
+  font-size: 16px; /* Размер шрифта */
+}
+
+
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .header-content {
+    padding: 10px 15px;
+  }
+
+  .logo img {
+    height: 35px;
+  }
+
+  .logo span {
+    font-size: 18px;
+  }
+
+  .menu li {
+    margin: 0 10px;
+  }
+
+  .menu li a {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+
+  h1 {
+    font-size: 26px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .dubbing-grid,
+  .voiceover-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  .dubbing-item img,
+  .voiceover-item img {
+    width: 95%;
+  }
+
+  .dubbing-item p,
+  .voiceover-item p {
+    font-size: 16px;
+  }
+
+  main {
+    padding: 15px;
+    max-width: 90%;
+  }
+}
+
+		
+		
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    padding: 10px 0;
+  }
+
+  .logo {
+    margin-bottom: 15px;
+  }
+
+  .logo img {
+    height: 32px;
+	width: 32px;
+  }
+
+  .logo span {
+    font-size: 18px;
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  .menu {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .menu li {
+    margin: 5px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu li a {
+    display: block;
+    padding: 8px 0;
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .dubbing-grid,
+  .voiceover-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dubbing-item img {
+    width: 90%;
+    height: auto;
+    border-radius: 0px;
+  }
+
+  .dubbing-item p,
+  .voiceover-item p {
+    font-size: 16px;
+  }
+
+  main {
+    padding: 10px;
+  }
+}
+
+
+/* Стили для мобильного меню */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background-color: #131313;
+  z-index: 1000;
+  transition: right 0.3s ease;
+  padding-top: 70px;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-menu li {
+  padding: 15px 20px;
+  border-bottom: 1px solid #333;
+}
+
+.mobile-menu li a {
+  color: #fff;
+  font-size: 18px;
+  display: block;
+  transition: color 0.3s;
+}
+
+.mobile-menu li a:hover {
+  color: #ff6f61;
+}
+
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Анимация гамбургер-иконки */
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  nav {
+    display: none;
+  }
+  
+  .header-content {
+    padding: 15px 20px;
+  }
+  
+  body.no-scroll {
+    overflow: hidden;
+  }
+}
+
+
+/* Обновленные стили для мобильного меню (добавляем в конец файла) */
+
+/* Базовые стили меню */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32px;
+  height: 24px;
+  cursor: pointer;
+  position: absolute; /* Изменено с relative на absolute */
+  right: 20px; /* Позиционируем у правого края */
+  top: 50%; /* Выравниваем по вертикали */
+  transform: translateY(-50%); /* Точное выравнивание по центру */
+  z-index: 1001;
+  margin-left: 0; /* Убираем предыдущий отступ */
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 3px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 85%;
+  max-width: 350px;
+  height: 100vh;
+  background-color: #1a1a1a;
+  z-index: 1000;
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding-top: 80px;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-menu li {
+  padding: 16px 25px;
+  border-bottom: 1px solid #2a2a2a;
+  transition: background-color 0.3s;
+}
+
+.mobile-menu li:active {
+  background-color: #2a2a2a;
+}
+
+.mobile-menu li a {
+  color: #fff;
+  font-size: 18px;
+  display: block;
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.mobile-menu li a:hover {
+  color: #ff6f61;
+}
+
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Анимация гамбургер-иконки */
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Адаптивные стили для планшетов и телефонов */
+@media (max-width: 1024px) {
+  .header-content {
+    position: relative; /* Добавляем для позиционирования кнопки */
+    padding: 15px 20px;
+  }
+  
+  .logo {
+    margin-right: auto; /* Логотип прижимается к левому краю */
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  nav {
+    display: none;
+  }
+
+  .header-content {
+    padding: 15px 25px;
+  }
+  
+  body.no-scroll {
+    overflow: hidden;
+  }
+  
+    .logo img {
+    height: 30px;
+    width: 30px;
+  }
+  
+  .logo span {
+    font-size: 20px;
+  }
+}
+  
+  /* Оптимизация для планшетов в альбомной ориентации */
+  @media (orientation: landscape) {
+    .mobile-menu {
+      width: 60%;
+      padding-top: 60px;
+    }
+    
+    .mobile-menu li {
+      padding: 12px 25px;
+    }
+
+    .logo img {
+      height: 30px;
+      width: 30px;
+    }
+  
+    .logo span {
+      font-size: 20px;
+    }
+}
+
+/* Дополнительные оптимизации для маленьких экранов */
+@media (max-width: 480px) {
+  .mobile-menu {
+    width: 90%;
+    padding-top: 70px;
+  }
+  
+  .mobile-menu li {
+    padding: 14px 20px;
+  }
+  
+  .mobile-menu li a {
+    font-size: 16px;
+  }
+  
+  .mobile-menu-toggle {
+    right: 15px; /* Еще ближе к краю на маленьких экранах */
+    width: 28px;
+    height: 21px;
+  }
+  
+  .logo img {
+    height: 30px;
+    width: 30px;
+  }
+  
+  .logo span {
+    font-size: 20px;
+  }
+}
+
+/* Плавное появление меню при загрузке */
+@media (max-width: 1024px) {
+  .mobile-menu {
+    will-change: transform;
+  }
+  
+  .mobile-overlay {
+    will-change: opacity;
+  }
+}
