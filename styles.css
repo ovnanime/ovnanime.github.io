@@ -328,3 +328,99 @@ footer {
     padding: 10px;
   }
 }
+
+
+/* Обновленные стили для гамбургер-меню (замените существующие) */
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 100;
+    position: relative;
+    margin-left: 15px; /* Отступ от логотипа */
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+/* Анимация гамбургера при открытии */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Адаптивные стили */
+@media (max-width: 1024px) {
+    .header-content {
+        flex-wrap: wrap; /* Разрешаем перенос элементов */
+    }
+    
+    .hamburger {
+        display: flex;
+        order: 1; /* Размещаем после логотипа */
+    }
+    
+    nav {
+        order: 2; /* Размещаем после кнопки */
+        width: 100%;
+    }
+    
+    .menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: #131313;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 60px;
+        transition: all 0.5s ease;
+    }
+    
+    .menu.active {
+        right: 0;
+    }
+    
+    .menu li {
+        margin: 15px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: row; /* Оставляем горизонтальное расположение */
+        align-items: center;
+        padding: 10px 15px;
+    }
+    
+    .logo {
+        margin-bottom: 0;
+        flex-grow: 1;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .menu {
+        width: 80%; /* Немного уменьшаем ширину меню */
+    }
+}
