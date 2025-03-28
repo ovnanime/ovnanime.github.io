@@ -87,6 +87,11 @@
         <img src="./assets/logo.png" alt="Логотип" width="40" height="40">
         <span>Объект всеобщей ненависти</span>
       </div>
+	  <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <nav>
         <ul class="menu">
           <li><a href="#">Главная</a></li>
@@ -225,6 +230,27 @@
     <p>В случаях нарушения авторских прав - обращайтесь на почту: <a href="mailto:support@ovnanime.ru">support@ovnanime.ru</a></p>
     <p>&copy; 2023 — 2025 • Объект всеобщей ненависти</p>
   </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.menu');
+        
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            menu.classList.toggle('active');
+        });
+        
+        // Закрытие меню при клике на пункт
+        const menuItems = document.querySelectorAll('.menu li a');
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                menu.classList.remove('active');
+            });
+        });
+    });
+</script>
 
 </body>
 </html>
