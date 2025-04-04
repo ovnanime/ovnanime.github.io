@@ -330,8 +330,7 @@ footer {
 }
 
 
-/* Обновленные стили для гамбургер-меню (замените существующие) */
-
+/* Обновленные стили для гамбургер-меню с кросс-браузерной поддержкой */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -341,7 +340,8 @@ footer {
     cursor: pointer;
     z-index: 100;
     position: relative;
-    margin-left: 15px; /* Отступ от логотипа */
+    margin-left: 15px;
+    -webkit-tap-highlight-color: transparent; /* Убирает подсветку при тапе на мобильных */
 }
 
 .hamburger span {
@@ -350,34 +350,42 @@ footer {
     height: 3px;
     background-color: #fff;
     transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease; /* Для Safari и старых Android */
+    backface-visibility: hidden; /* Убирает мерцание в некоторых браузерах */
+    transform-origin: center;
+    -webkit-transform-origin: center; /* Для Safari */
 }
 
 /* Анимация гамбургера при открытии */
 .hamburger.active span:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
+    -webkit-transform: translateY(9px) rotate(45deg); /* Для Safari */
 }
 
 .hamburger.active span:nth-child(2) {
     opacity: 0;
+    transform: scaleX(0);
+    -webkit-transform: scaleX(0); /* Для Safari */
 }
 
 .hamburger.active span:nth-child(3) {
     transform: translateY(-9px) rotate(-45deg);
+    -webkit-transform: translateY(-9px) rotate(-45deg); /* Для Safari */
 }
 
-/* Адаптивные стили */
+/* Адаптивные стили для меню */
 @media (max-width: 1024px) {
     .header-content {
-        flex-wrap: wrap; /* Разрешаем перенос элементов */
+        flex-wrap: wrap;
     }
     
     .hamburger {
         display: flex;
-        order: 1; /* Размещаем после логотипа */
+        order: 1;
     }
     
     nav {
-        order: 2; /* Размещаем после кнопки */
+        order: 2;
         width: 100%;
     }
     
@@ -393,6 +401,9 @@ footer {
         justify-content: center;
         padding-top: 60px;
         transition: all 0.5s ease;
+        -webkit-transition: all 0.5s ease; /* Для Safari */
+        overflow-y: auto; /* Добавляем скролл если меню слишком длинное */
+        -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
     }
     
     .menu.active {
@@ -401,26 +412,90 @@ footer {
     
     .menu li {
         margin: 15px 0;
+        width: 80%;
+    }
+    
+    .menu li a {
+        display: block;
+        padding: 12px;
+        font-size: 18px;
+        text-align: center;
     }
 }
 
 @media (max-width: 768px) {
-    .header-content {
-        flex-direction: row; /* Оставляем горизонтальное расположение */
-        align-items: center;
-        padding: 10px 15px;
+  .header-content {
+    display: flex;
+    flex-direction: row; /* Горизонтальное расположение */
+    align-items: center;
+    padding: 10px 15px;
+    justify-content: space-between; /* Равномерное распределение */
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Разрешаем перенос текста */
+    flex: 1; /* Занимает доступное пространство */
+    min-width: 0; /* Позволяет тексту сжиматься */
+  }
+
+  .logo img {
+    height: 32px;
+    width: 32px;
+    margin-right: 10px;
+    flex-shrink: 0; /* Запрещаем сжатие изображения */
+  }
+
+  .logo span {
+    font-size: 18px;
+    white-space: normal; /* Разрешаем перенос слов */
+    word-break: normal; /* Перенос по словам */
+    overflow-wrap: break-word; /* Перенос длинных слов */
+    max-width: calc(100% - 42px); /* Учитываем ширину логотипа */
+  }
+
+  .hamburger {
+    display: flex;
+    margin-left: 15px; /* Отступ от логотипа */
+    flex-shrink: 0; /* Запрещаем сжатие кнопки */
+  }
+
+  nav {
+    order: 2;
+    width: 100%;
+  }
+
+  .menu {
+    width: 80%;
+  }
+}
+
+/* Оптимизация для очень маленьких экранов */
+@media (max-width: 480px) {
+  .logo span {
+    font-size: 18px;
+    line-height: 1.3; /* Улучшаем читаемость */
+  }
+  
+  .header-content {
+    padding: 10px;
+  }
+}
+
+/* Фикс для Firefox */
+@-moz-document url-prefix() {
+    .hamburger span {
+        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     }
-    
-    .logo {
-        margin-bottom: 0;
-        flex-grow: 1;
+}
+
+/* Фикс для старых версий Edge */
+@supports (-ms-ime-align:auto) {
+    .hamburger span {
+        transition: none;
     }
-    
-    .hamburger {
-        display: flex;
-    }
-    
-    .menu {
-        width: 80%; /* Немного уменьшаем ширину меню */
+    .hamburger.active span {
+        transition: all 0.3s ease;
     }
 }
