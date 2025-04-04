@@ -340,8 +340,13 @@ footer {
     cursor: pointer;
     z-index: 100;
     position: relative;
-    margin-left: 15px;
-    -webkit-tap-highlight-color: transparent; /* Убирает подсветку при тапе на мобильных */
+    margin-left: auto; /* Выравнивание по правому краю */
+    -webkit-tap-highlight-color: transparent;
+    background: transparent;
+    border: none;
+    padding: 0;
+    outline: none;
+    appearance: none; /* Важно для Brave */
 }
 
 .hamburger span {
@@ -498,4 +503,24 @@ footer {
     .hamburger.active span {
         transition: all 0.3s ease;
     }
+	
+	/* Фиксы для Brave */
+.hamburger::-moz-focus-inner {
+    border: 0;
+}
+
+.hamburger span {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+@supports (-webkit-touch-callout: none) {
+    /* Специфичные стили для WebKit (Brave на iOS) */
+    .hamburger {
+        -webkit-user-select: none;
+    }
+    .menu {
+        -webkit-overflow-scrolling: touch;
+    }
+}
 }
