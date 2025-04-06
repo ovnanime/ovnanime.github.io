@@ -86,12 +86,10 @@ nav {
 
 /* Стили для списка меню */
 .menu {
-  display: flex;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  justify-content: flex-start; /* Выравнивание по левому краю */
-  width: 100%; /* Занимает всю доступную ширину */
+  display: flex; /* Используем flexbox для горизонтального расположения пунктов меню */
+  list-style-type: none; /* Убираем маркеры списка */
+  padding: 0; /* Убираем внутренние отступы */
+  margin: 0; /* Убираем внешние отступы */
 }
 
 /* Стили для каждого пункта меню */
@@ -436,8 +434,6 @@ footer {
         -webkit-transition: all 0.5s ease; /* Для Safari */
         overflow-y: auto; /* Добавляем скролл если меню слишком длинное */
         -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
-	    align-items: flex-start; /* Выравнивание сверху для мобильной версии */
-        padding-top: 20px;
     }
     
     .menu.active {
@@ -445,9 +441,8 @@ footer {
     }
     
     .menu li {
-    margin: 5px 0;
-    width: 100%;
-    text-align: left; /* Текст по левому краю */
+        margin: 15px 0;
+        width: 80%;
     }
     
     .menu li a {
