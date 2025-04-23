@@ -1,6 +1,4 @@
-
-/* Добавьте в самый верх файла styles.css */
-html, body {
+/* Стили для основного содержимого страницы */html, body {
 	scroll-behavior: smooth;
     overflow-x: hidden;
     width: 100%;
@@ -9,24 +7,26 @@ html, body {
     outline: none;
 }
 
-/* Для всех элементов - защита от выхода за границы */
 * {
     box-sizing: border-box;
 }
 
-/* Исправление для изображений */
+main {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
 img {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-/* Для контейнера с обложкой */
 .cover {
     max-width: 100vw;
 }
 
-/* Основные стили для всего тела страницы */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -37,116 +37,100 @@ body {
   width: 100%;
 }
 
-/* Стили для всех ссылок на сайте */
 a {
-  color: #C0C0C0; /* Мягкий голубой цвет */
-  text-decoration: none; /* Убираем подчеркивание */
-  transition: color 0.3s; /* Плавное изменение цвета при наведении */
+  color: #C0C0C0;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
-/* Стили для ссылок при наведении */
 a:hover {
-  color: #ff6f61; /* Цвет при наведении (например, оранжевый) */
+  color: #87ceeb;
 }
 
 /* Стили для шапки (header) */
 header {
-  background-color: #131313; /* Темный фон шапки */
-  color: #fff; /* Белый цвет текста в шапке */
-  padding: 15px 20px; /* Внутренние отступы: 10px сверху и снизу, 20px слева и справа */
+  background-color: #131313;
+  color: #fff;
+  padding: 10px 20px;
+  z-index: 1000;
+  margin-bottom: -30px;
 }
 
 /* Контейнер для содержимого шапки */
 .header-content {
-  display: flex; /* Используем flexbox для выравнивания элементов */
-  justify-content: space-between; /* Распределяем пространство между элементами */
-  align-items: center; /* Выравниваем элементы по вертикали по центру */
-  max-width: 1200px; /* Максимальная ширина контейнера */
-  margin: 0 auto; /* Центрирование контейнера по горизонтали */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Стили для логотипа и текста */
 .logo {
-  display: flex; /* Используем flexbox для выравнивания логотипа и текста */
-  align-items: center; /* Выравниваем элементы по вертикали по центру */
+  display: flex;
+  align-items: center;
 }
 
-/* Стили для изображения логотипа */
 .logo img {
-  height: 40px; /* Высота логотипа */
-  margin-right: 10px; /* Отступ справа от логотипа */
+  height: 40px;
+  margin-right: 10px;
 }
 
-/* Стили для текста рядом с логотипом */
 .logo span {
-  font-size: 20px; /* Размер шрифта */
-  font-weight: bold; /* Жирный шрифт */
+  font-size: 20px;
+  font-weight: bold;
 }
 
-/* Стили для навигационного меню */
 nav {
-  display: flex; /* Используем flexbox для выравнивания элементов меню */
-  align-items: center; /* Выравниваем элементы по вертикали по центру */
+  display: flex;
+  align-items: center;
 }
 
-/* Стили для списка меню */
+
 .menu {
-  display: flex; /* Используем flexbox для горизонтального расположения пунктов меню */
-  list-style-type: none; /* Убираем маркеры списка */
-  padding: 0; /* Убираем внутренние отступы */
-  margin: 0; /* Убираем внешние отступы */
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* Стили для каждого пункта меню */
 .menu li {
-  margin: 0 15px; /* Отступы между пунктами меню: 0 сверху и снизу, 15px слева и справа */
+  margin: 0 15px;
 }
 
-/* Стили для ссылок в меню */
 .menu li a {
-  color: #fff; /* Белый цвет текста */
-  text-decoration: none; /* Убираем подчеркивание у ссылок */
-  font-size: 18px; /* Размер шрифта */
-  padding: 10px 15px; /* Внутренние отступы: 10px сверху и снизу, 15px слева и справа */
-  /* transition: transform 0.3s; Плавное увеличение при наведении */
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 15px;
 }
 
-/* Стили для ссылок при наведении */
 .menu li a:hover {
-  background-color: #131313; /* Темный фон при наведении */
-  border-radius: 5px; /* Закругленные углы */
+  background-color: #131313;
+  border-radius: 5px;
 }
 
-/* Стили для обложки (шапки) */
 .cover {
-  width: 100%; /* Ширина на всю страницу */
-  overflow: hidden; /* Скрываем выходящие за пределы элементы */
+  width: 100%; 
+  overflow: hidden;
 }
 
 .cover img {
-  width: 100%; /* Ширина изображения на всю ширину контейнера */
-  height: auto; /* Автоматическая высота для сохранения пропорций */
-  display: block; /* Убираем лишние отступы */
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-/* Стили для основного содержимого страницы */
-main {
-  padding: 20px; /* Внутренние отступы */
-  max-width: 1000px; /* Максимальная ширина контейнера */
-  margin: 0 auto; /* Центрирование контейнера по горизонтали */
-}
 
 
 /* Стили для заголовков разделов */
 h1 {
-  text-align: center; /* Выравнивание текста по центру */
-  font-size: 30px; /* Увеличенный размер шрифта */
-  margin-bottom: 20px; /* Отступ снизу */
-  color: #ffffff; /* Цвет заголовка (например, оранжевый) */
+  text-align: center; 
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #ffffff;
   margin-top: 40px;
   margin-bottom: 40px;
 }
-
 
 /* Стили для раздела "Постеров */
 .dubbing-grid, .voiceover-grid {
@@ -176,13 +160,13 @@ h1 {
 
 /* Стили для подвала (footer) */
 footer {
-  background-color: #131313; /* Темный фон подвала */
-  color: #fff; /* Белый цвет текста */
-  text-align: center; /* Выравнивание текста по центру */
-  padding: 10px; /* Внутренние отступы */
-  bottom: 0; /* Прижимаем подвал к нижней части страницы */
-  width: 100%; /* Ширина подвала на всю страницу */
-  font-size: 16px; /* Размер шрифта */
+  background-color: #131313;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  bottom: 0;
+  width: 100%;
+  font-size: 16px;
 }
 
 
@@ -242,8 +226,9 @@ footer {
   }
 }
 
-		
-		
+
+
+
 @media (max-width: 768px) {
   .header-content {
     flex-direction: column;
@@ -257,10 +242,12 @@ footer {
   .logo img {
     height: 32px;
 	width: 32px;
+	margin-bottom: -15px;
   }
 
   .logo span {
     font-size: 18px;
+	margin-bottom: -15px;
   }
 
   nav {
@@ -324,7 +311,7 @@ footer {
   width: 30px;
   height: 21px;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1001;
   background: transparent;
   border: none;
   padding: 0;
@@ -378,9 +365,9 @@ footer {
         justify-content: center;
         padding-top: 60px;
         transition: all 0.5s ease;
-        -webkit-transition: all 0.5s ease; /* Для Safari */
-        overflow-y: auto; /* Добавляем скролл если меню слишком длинное */
-        -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
+        -webkit-transition: all 0.5s ease;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
     
     .menu.active {
@@ -403,7 +390,7 @@ footer {
 @media (max-width: 768px) {
   .header-content {
     display: flex;
-    flex-direction: row; /* Горизонтальное расположение */
+    flex-direction: row;
     align-items: center;
     padding: 10px 15px;
     justify-content: space-between; /* Равномерное распределение */
@@ -412,30 +399,31 @@ footer {
   .logo {
     display: flex;
     align-items: center;
-    flex-wrap: wrap; /* Разрешаем перенос текста */
-    flex: 1; /* Занимает доступное пространство */
-    min-width: 0; /* Позволяет тексту сжиматься */
+    flex-wrap: wrap;
+    flex: 1;
+    min-width: 0;
   }
 
   .logo img {
     height: 32px;
     width: 32px;
     margin-right: 10px;
-    flex-shrink: 0; /* Запрещаем сжатие изображения */
+    flex-shrink: 0;
   }
 
   .logo span {
     font-size: 18px;
-    white-space: normal; /* Разрешаем перенос слов */
-    word-break: normal; /* Перенос по словам */
-    overflow-wrap: break-word; /* Перенос длинных слов */
-    max-width: calc(100% - 42px); /* Учитываем ширину логотипа */
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: break-word;
+    max-width: calc(100% - 42px);
   }
 
   .hamburger {
     display: flex;
-    margin-left: 15px; /* Отступ от логотипа */
-    flex-shrink: 0; /* Запрещаем сжатие кнопки */
+    margin-left: 15px;
+    flex-shrink: 0;
+	z-index: 1001;
   }
 
   nav {
@@ -445,6 +433,7 @@ footer {
 
   .menu {
     width: 80%;
+	z-index: 1000;
   }
 }
 
@@ -452,7 +441,7 @@ footer {
 @media (max-width: 480px) {
   .logo span {
     font-size: 18px;
-    line-height: 1.3; /* Улучшаем читаемость */
+    line-height: 1.3;
   }
   
   .header-content {
