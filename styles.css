@@ -113,8 +113,8 @@ nav {
 .cover {
   width: 100%; 
   overflow: hidden;
-  margin-top: 20px;
-  margin-bottom: -20px;
+  margin-top: 40px;
+  margin-bottom: -40px;
 }
 
 .cover img {
@@ -388,6 +388,10 @@ footer {
         font-size: 18px;
         text-align: center;
     }
+	
+	.cover {
+      margin-bottom: -20px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -438,6 +442,11 @@ footer {
     width: 80%;
 	z-index: 1000;
   }
+  
+  .cover {
+    margin-bottom: -10px;
+}
+  
 }
 
 /* Оптимизация для очень маленьких экранов */
