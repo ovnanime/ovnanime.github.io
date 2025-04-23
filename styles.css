@@ -1,4 +1,5 @@
-/* Стили для основного содержимого страницы */html, body {
+/* Стили для основного содержимого страницы */
+html, body {
 	scroll-behavior: smooth;
     overflow-x: hidden;
     width: 100%;
@@ -112,6 +113,8 @@ nav {
 .cover {
   width: 100%; 
   overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: -20px;
 }
 
 .cover img {
