@@ -1,0 +1,152 @@
+<nav class="menu">
+  <div class="header-content">
+    <div class="logo">
+      <a href="index.html">Объект всеобщей ненависти</a>
+    </div>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul>
+      <li><a href="index.html">Главная</a></li>
+      <li><a href="#dubbing">Дубляж</a></li>
+      <li><a href="#voiceover">Закадровый перевод</a></li>
+      <li><a href="pages/about.html">О проекте</a></li>
+      <li><a href="pages/contact.html">Контакты</a></li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .menu {
+    background-color: #1a1a1a;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .logo a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .menu ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu li {
+    margin-left: 30px;
+  }
+  
+  .menu a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .menu a:hover {
+    color: #ff6b6b;
+  }
+  
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+  }
+  
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transition: all 0.3s;
+  }
+  
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+    
+    .menu ul {
+      position: fixed;
+      top: 60px;
+      left: -100%;
+      width: 100%;
+      height: calc(100vh - 60px);
+      background-color: #1a1a1a;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      transition: left 0.3s;
+    }
+    
+    .menu ul.active {
+      left: 0;
+    }
+    
+    .menu li {
+      margin: 15px 0;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const menu = document.querySelector('.menu ul');
+    const html = document.documentElement;
+    
+    hamburger.addEventListener('click', function() {
+      this.classList.toggle('active');
+      menu.classList.toggle('active');
+      
+      if (menu.classList.contains('active')) {
+        html.style.overflow = 'hidden';
+      } else {
+        html.style.overflow = '';
+      }
+    });
+    
+    const menuItems = document.querySelectorAll('.menu li a');
+    menuItems.forEach(item => {
+      item.addEventListener('click', function() {
+        if (window.innerWidth <= 768) {
+          hamburger.classList.remove('active');
+          menu.classList.remove('active');
+          html.style.overflow = '';
+        }
+      });
+    });
+  });
+</script>
