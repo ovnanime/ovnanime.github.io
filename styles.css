@@ -1,9 +1,12 @@
 
 /* Добавьте в самый верх файла styles.css */
 html, body {
+	scroll-behavior: smooth;
     overflow-x: hidden;
     width: 100%;
     max-width: 100%;
+	-webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 /* Для всех элементов - защита от выхода за границы */
@@ -25,11 +28,13 @@ img {
 
 /* Основные стили для всего тела страницы */
 body {
-  font-family: Arial, sans-serif; /* Шрифт для всей страницы */
-  margin: 0; /* Убираем внешние отступы */
-  padding: 0; /* Убираем внутренние отступы */
-  background-color: #131313; /* Темный фон страницы */
-  color: #fff; /* Белый цвет текста */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #131313;
+  color: #fff;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Стили для всех ссылок на сайте */
@@ -143,81 +148,29 @@ h1 {
 }
 
 
-/* Стили для раздела "Дубляж" */
-#dubbing {
-  margin-bottom: 40px; /* Отступ снизу */
-}
-
-/* Сетка для постеров */
-.dubbing-grid {
+/* Стили для раздела "Постеров */
+.dubbing-grid, .voiceover-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 колонки */
-  gap: 10px; /* Расстояние между элементами */
-  justify-content: center; /* Центрирование по горизонтали */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  justify-content: center;
 }
 
-/* Стили для каждого элемента в сетке */
-.dubbing-item {
-  text-align: center; /* Выравнивание текста по центру */
+.dubbing-item, .voiceover-item {
+  text-align: center;
 }
 
-/* Стили для постеров */
-.dubbing-item img {
-  width: 90%; /* Ширина постера на всю колонку */
-  height: auto; /* Автоматическая высота */
-  border-radius: 0px; /* Закругленные углы */
-  /* transition: transform 0.3s; Плавное увеличение при наведении */
+.dubbing-item img, .voiceover-item img {
+  width: 90%;
+  height: auto;
+  border-radius: 0px;
 }
 
-/* Эффект при наведении на постер */
-.dubbing-item img:hover {
-  /*transform: scale(1.05); Увеличение постера */
-}
-
-/* Стили для названий под постерами */
-.dubbing-item p {
-  margin-top: 10px; /* Отступ сверху */
-  font-size: 18px; /* Размер шрифта */
-  color: #fff; /* Белый цвет текста */
-}
-
-
-/* Стили для раздела "Закадровая озвучка" */
-#voiceover {
-  margin-bottom: 40px; /* Отступ снизу */
-}
-
-/* Сетка для постеров закадровой озвучки */
-.voiceover-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 колонки */
-  gap: 10px; /* Расстояние между элементами */
-  justify-content: center; /* Центрирование по горизонтали */
-}
-
-/* Стили для каждого элемента в сетке закадровой озвучки */
-.voiceover-item {
-  text-align: center; /* Выравнивание текста по центру */
-}
-
-/* Стили для постеров закадровой озвучки */
-.voiceover-item img {
-  width: 90%; /* Ширина постера на всю колонку */
-  height: auto; /* Автоматическая высота */
-  border-radius: 0px; /* Закругленные углы */
-  /* transition: transform 0.3s; Плавное увеличение при наведении */
-}
-
-/* Эффект при наведении на постер закадровой озвучки */
-.voiceover-item img:hover {
-  /*transform: scale(1.05); Увеличение постера */
-}
-
-/* Стили для названий под постерами закадровой озвучки */
-.voiceover-item p {
-  margin-top: 10px; /* Отступ сверху */
-  font-size: 18px; /* Размер шрифта */
-  color: #fff; /* Белый цвет текста */
+.dubbing-item p, .voiceover-item p {
+  width: 90%;
+  margin-top: 10px;
+  font-size: 18px;
+  color: #fff;
 }
 
 
@@ -272,11 +225,15 @@ footer {
   .dubbing-item img,
   .voiceover-item img {
     width: 95%;
+	margin: 0 auto;
   }
 
   .dubbing-item p,
   .voiceover-item p {
     font-size: 16px;
+	width: 95%;
+	margin: 0 auto;
+	margin-top: 10px;
   }
 
   main {
@@ -338,15 +295,19 @@ footer {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .dubbing-item img {
+  .dubbing-item img, .voiceover-item img {
     width: 90%;
     height: auto;
     border-radius: 0px;
+    margin: 0 auto;
   }
 
   .dubbing-item p,
   .voiceover-item p {
     font-size: 16px;
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 6px;
   }
 
   main {
@@ -355,52 +316,38 @@ footer {
 }
 
 
-/* Обновленные стили для гамбургер-меню с кросс-браузерной поддержкой */
+/* Стили для гамбургер-меню с кросс-браузерной поддержкой */
 .hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    cursor: pointer;
-    z-index: 100;
-    position: relative;
-    margin-left: auto; /* Выравнивание по правому краю */
-    -webkit-tap-highlight-color: transparent;
-    background: transparent;
-    border: none;
-    padding: 0;
-    outline: none;
-    appearance: none; /* Важно для Brave */
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  z-index: 100;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .hamburger span {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: #fff;
-    transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease; /* Для Safari и старых Android */
-    backface-visibility: hidden; /* Убирает мерцание в некоторых браузерах */
-    transform-origin: center;
-    -webkit-transform-origin: center; /* Для Safari */
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  transition: all 0.3s ease;
 }
 
-/* Анимация гамбургера при открытии */
 .hamburger.active span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-    -webkit-transform: translateY(9px) rotate(45deg); /* Для Safari */
+  transform: translateY(9px) rotate(45deg);
 }
 
 .hamburger.active span:nth-child(2) {
-    opacity: 0;
-    transform: scaleX(0);
-    -webkit-transform: scaleX(0); /* Для Safari */
+  opacity: 0;
 }
 
 .hamburger.active span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-    -webkit-transform: translateY(-9px) rotate(-45deg); /* Для Safari */
+  transform: translateY(-9px) rotate(-45deg);
 }
 
 /* Адаптивные стили для меню */
