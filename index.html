@@ -81,7 +81,32 @@
   
 </head>
 <body>
-  <div id="menu-container"></div>
+
+
+<!-- МЕНЮ САЙТА - НАЧАЛО -->
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <img src="./assets/logo.png" alt="Логотип" width="40" height="40">
+        <span>Объект всеобщей ненависти</span>
+      </div>
+	  <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav>
+        <ul class="menu">
+          <li><a href="#">Главная</a></li>
+          <li><a href="#team">Команда проекта</a></li>
+          <li><a href="#releases">Поддержать</a></li>
+          <li><a href="#">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+<!-- МЕНЮ САЙТА - КОНЕЦ -->
+
 
   <div class="cover">
     <img src="./assets/cover.png" alt="Обложка" width="1200" height="400" loading="lazy">
@@ -205,7 +230,13 @@
     </section>
   </main>
 
-  <script src="load-components.js"></script>
+
+<!-- ФУТЕР САЙТА - НАЧАЛО -->
+  <footer>
+    <p>Материалы на этом сайте предназначены только для ознакомления.</p>
+    <p>В случаях нарушения авторских прав - обращайтесь на почту: <a href="mailto:support@ovnanime.ru">support@ovnanime.ru</a></p>
+    <p>&copy; 2023 — 2025 • Объект всеобщей ненависти</p>
+  </footer>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -248,6 +279,9 @@
         });
     });
 </script>
+
+<!-- ФУТЕР САЙТА - КОНЕЦ -->
+
 
 </body>
 </html>
