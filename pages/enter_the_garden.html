@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Войти в сад / Enter The Garden</title>
+    <link rel="stylesheet" href="styles.css?v=1.1">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
     <style>
         * {
             margin: 0;
@@ -35,7 +37,7 @@
         .section-header {
             background-color: #2c2c2c;
             padding: 10px 20px;
-            margin: 20px 0 20px 0;
+            margin: 10px 0 10px 0;
             font-size: 1.2rem;
             font-weight: bold;
         }
@@ -45,7 +47,8 @@
         }
         .ani-poster {
             position: relative;
-            max-width: 400px;
+            max-width: 300px;
+		    margin: 0px auto;
             height: auto;
             object-fit: cover;
             border-radius: 0px;
@@ -56,7 +59,7 @@
             padding-left: 0;
         }
         .ani-info li {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-size: 0.9rem;
         }
         .ani-info strong {
@@ -172,17 +175,85 @@
             background-color: #505050;
         }
         
+		
+		
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 20px; /* Уменьшим отступ сверху */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 95%; /* Увеличим максимальную ширину */
+            max-height: 90vh; /* Увеличим максимальную высоту */
+            object-fit: contain; /* Чтобы изображение сохраняло пропорции */
+        }
+
+        #caption {
+            margin: auto;
+            display: block;
+            width: 95%;
+            max-width: 800px; /* Увеличим максимальную ширину */
+            text-align: center;
+            color: #ccc;
+            padding: 15px 0; /* Увеличим отступы */
+            height: auto; /* Сделаем высоту автоматической */
+            font-size: 1.2rem; /* Увеличим размер шрифта */
+        }
+
+        .close {
+            position: absolute;
+            top: 25px; /* Подвинем ниже */
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 50px; /* Увеличим размер */
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001; /* Чтобы был поверх изображения */
+        }
+
+        .close:hover {
+            color: #ff6f61;
+        }
+
+        
+        .modal-content, #caption {  
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)} 
+            to {transform:scale(1)}
+        }
+		
         @media (max-width: 768px) {
             .ani-description {
                 flex-direction: column;
                 text-align: center;
             }
+			
+			.ani-poster {
+                margin: 9px auto -10px auto;
+            }
+			
             .ani-info {
                 text-align: center;
             }
+			
             .ani-gallery img {
-                width: 120px;
-                height: 80px;
+                width: 180px;
+                height: 120px;
             }
             .iframeContainerPl {
                 height: 300px;
@@ -195,8 +266,13 @@
                 padding: 10px;
                 font-size: 0.9rem;
             }
-        }
-        
+			
+			<!-- Для мобильных устройств -->
+            .modal-content {
+                max-width: 100%;
+            }
+		}
+		
         .teams {
             margin-top: 20px;
         }
@@ -240,7 +316,7 @@
     <div class="container">
         <div class="section-header">Войти в сад / Enter The Garden</div>
         <div class="ani-description">
-            <img src="../assets/posters/enter_the_garden.webp" class="ani-poster" alt="Войти в сад">
+            <img loading="lazy" src="../assets/posters/enter_the_garden.webp" class="ani-poster" alt="Войти в сад">
             <div class="ani-info">
                 <div class="section-header">Описание</div>
                 <p style="text-align: left;"><span style="color: #fff;">Проект Enter the Garden разрабатывается компанией Chiru Labs под брендом Azuki — американской Web3-компанией, стремящейся «рассказывать истории на пересечении искусства, технологий и культуры».</span></p>
@@ -258,11 +334,11 @@
         </div>
         <div class="section-header">Кадры</div>
         <div class="ani-gallery">
-            <img src="../assets/img/enter_the_garden/enter_the_garden_1.webp" alt="enter_the_garden_1">
-            <img src="../assets/img/enter_the_garden/enter_the_garden_2.webp" alt="enter_the_garden_2">
-            <img src="../assets/img/enter_the_garden/enter_the_garden_3.webp" alt="enter_the_garden_3">
-			<img src="../assets/img/enter_the_garden/enter_the_garden_4.webp" alt="enter_the_garden_4">
-			<img src="../assets/img/enter_the_garden/enter_the_garden_5.webp" alt="enter_the_garden_5">
+            <img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_1.webp" alt="Enter The Garden - 01">
+            <img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_2.webp" alt="Enter The Garden - 02">
+            <img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_3.webp" alt="Enter The Garden - 03">
+			<img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_4.webp" alt="Enter The Garden - 04">
+			<img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_5.webp" alt="Enter The Garden - 05">
         </div>
         <div class="ani-watch">
             <div class="section-header">Смотреть онлайн</div>
@@ -347,9 +423,16 @@
         </div>
         <div class="comments">
             <div class="comments-header">Оставить комментарий</div>
+            <!-- Put this script tag to the <head> of your page -->
+            <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
             <script type="text/javascript">
-                VK.init({ apiId: 51986518, onlyWidgets: true });
-                VK.Widgets.Comments("vk_comments", { limit: 10, attach: "*" });
+              VK.init({ apiId: 51904582, onlyWidgets: true });
+            </script>
+
+            <!-- Put this div tag to the place, where the Comments block will be -->
+            <div id="vk_comments"></div>
+            <script type="text/javascript">
+              VK.Widgets.Comments("vk_comments", {limit: 10, attach: "false"});
             </script>
         </div>
     </div>
@@ -403,5 +486,48 @@
         });
     });
 </script>
+
+<!-- Модальное окно для полноэкранного просмотра -->
+<div id="imageModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImage">
+  <div id="caption"></div>
+</div>
+
+<script>
+// Полноэкранный просмотр изображений галереи
+document.querySelectorAll('.ani-gallery img').forEach(img => {
+  img.style.cursor = 'pointer';
+  img.addEventListener('click', function() {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const captionText = document.getElementById('caption');
+    
+    modal.style.display = 'block';
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+    
+    // Закрытие по клику на крестик
+    document.querySelector('.close').onclick = function() {
+      modal.style.display = 'none';
+    }
+    
+    // Закрытие по клику вне изображения
+    modal.onclick = function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    }
+    
+    // Закрытие по ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display === 'block') {
+        modal.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
+
 </body>
 </html>
