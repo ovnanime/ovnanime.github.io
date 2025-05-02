@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Войти в сад / Enter The Garden</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        li {
+            list-style-type: none;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .section-header {
+            background-color: #2c2c2c;
+            padding: 6px 20px;
+            margin: 10px 0 10px 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .ani-description {
+            display: flex;
+            gap: 20px;
+        }
+        .ani-poster {
+            position: relative;
+            max-width: 300px;
+		    margin: 0px auto;
+            height: auto;
+            object-fit: cover;
+            border-radius: 0px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .ani-info {
+            list-style: none;
+            padding-left: 0;
+        }
+        .ani-info li {
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+			margin-left: -24px;
+        }
+        .ani-info strong {
+            font-weight: bold;
+        }
+        .ani-info-type {
+            opacity: 50%;
+        }
+        .ani-gallery {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+        }
+        .ani-gallery img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            scroll-snap-align: center;
+        }
+        .ani-watch {
+            margin-top: 20px;
+        }
+        .alert {
+            background-color: #2c2c2c;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .iframeContainerPl {
+            display: none;
+            height: 560px;
+        }
+        .iframeContainerPl.active {
+            display: block;
+        }
+        .select-plr {
+            margin-right: 1px;
+            color: #FFFFFF;
+            border: 0px solid #131313;
+            background-color: #2c2c2c;
+            transition: background-color 0.3s;
+            padding: 10px 20px;
+            cursor: pointer;
+            flex-shrink: 0;
+            scroll-snap-align: center;
+        }
+        .select-plr.active {
+            background-color: #505050;
+        }
+        .select-ep {
+            display: none;
+        }
+        .select-ep.active {
+            display: block;
+        }
+        .buttonContainer {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 3px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 5px;
+        }
+    
+        .buttonContainer::-webkit-scrollbar {
+            height: 4px;
+        }
+    
+        .buttonContainer::-webkit-scrollbar-track {
+            background: #2c2c2c;
+            border-radius: 2px;
+        }
+    
+        .buttonContainer::-webkit-scrollbar-thumb {
+            background: #505050;
+            border-radius: 2px;
+        }
+	
+        #sibnetContainer, #animeLibContainer {
+            margin-bottom: 5px;
+			margin-top: -4px;
+        }
+        .player-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            overflow: hidden;
+        }
+        .player-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        select {
+            margin-left: 0px;
+            margin-top: 5px;
+            color: #FFFFFF;
+            border: 0px solid #2c2c2c;
+            background-color: #2c2c2c;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        select:active, select:focus, select:hover {
+            color: #FFFFFF;
+            background-color: #505050;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 20px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 95%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        #caption {
+            margin: auto;
+            display: block;
+            width: 95%;
+            max-width: 800px;
+            text-align: center;
+            color: #ccc;
+            padding: 15px 0;
+            height: auto;
+            font-size: 1.2rem;
+        }
+
+        .close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 50px; 
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .close:hover {
+            color: #ff6f61;
+        }
+
+        
+        .modal-content, #caption {  
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)} 
+            to {transform:scale(1)}
+        }
+		
+        @media (max-width: 768px) {
+		    * {
+                box-sizing: border-box;
+            }
+			
+            .ani-description {
+                flex-direction: column;
+                text-align: center;
+            }
+			
+			.ani-poster {
+			    max-width: 270px;
+                margin: 9px auto -10px auto;
+            }
+			
+            .ani-info {
+                text-align: center;
+            }
+			
+            .ani-gallery img {
+                width: 180px;
+                height: 120px;
+            }
+            .iframeContainerPl {
+                height: 300px;
+            }
+            .buttonContainer {
+                justify-content: space-between;
+            }
+            .select-plr {
+                flex: 1;
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+			
+			<!-- Для мобильных устройств -->
+            .modal-content {
+                max-width: 100%;
+            }
+		}
+		
+        .teams {
+            margin-top: 20px;
+        }
+        .team-member {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border-bottom: 1px solid #4a4a4a;
+        }
+        .team-member:last-child {
+            border-bottom: none;
+        }
+        .team-member img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .team-member-name {
+            font-weight: bold;
+        }
+        .team-member-role {
+            font-size: 0.9rem;
+            color: #aaaaaa;
+        }
+        .comments {
+          margin-top: 20px;
+         width: 100%;
+          overflow: visible; /* Важно! */
+        }
+		
+        .comments-header {
+            background-color: #2c2c2c;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+<!-- МЕНЮ САЙТА - НАЧАЛО -->
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <img src="../assets/logo.png" alt="Логотип" width="40" height="40">
+        <span>Объект всеобщей ненависти</span>
+      </div>
+	  <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav>
+        <ul class="menu">
+          <li><a href="../index.html">Главная</a></li>
+          <li><a href="#team">Команда проекта</a></li>
+          <li><a href="#releases">Поддержать</a></li>
+          <li><a href="#">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+<!-- МЕНЮ САЙТА - КОНЕЦ -->
+
+
+    <div class="container">
+        <div class="section-header">Войти в сад / Enter The Garden</div>
+        <div class="ani-description">
+            <img loading="lazy" src="../assets/posters/enter_the_garden.webp" class="ani-poster" alt="Войти в сад">
+            <div class="ani-info">
+                <div class="section-header">Описание</div>
+                <p style="text-align: left;"><span style="color: #fff;">Проект Enter the Garden разрабатывается компанией Chiru Labs под брендом Azuki — американской Web3-компанией, стремящейся «рассказывать истории на пересечении искусства, технологий и культуры».</span></p>
+                <div class="section-header">Информация</div>
+                <ul style="text-align: left;">
+                    <li><strong class="ani-info-type">NFT Проект:</strong> AZUKI</li>
+                    <li><strong class="ani-info-type">Тип:</strong> ONA</li>
+                    <li><strong class="ani-info-type">Эпизоды:</strong> 2/3</li>
+                    <li><strong class="ani-info-type">Длительность эпизода:</strong> 8 мин</li>
+                    <li><strong class="ani-info-type">Жанры:</strong> Приключения</li>
+                    <li><strong class="ani-info-type">Рейтинг:</strong> PG-13</li>
+                    <li><strong class="ani-info-type">Другие названия:</strong> Azuki: Enter The Garden</li>
+                </ul>
+            </div>
+        </div>
+        <div class="section-header">Кадры</div>
+        <div class="ani-gallery">
+            <img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_1.webp" alt="Enter The Garden - 01">
+            <img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_2.webp" alt="Enter The Garden - 02">
+            <img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_3.webp" alt="Enter The Garden - 03">
+			<img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_4.webp" alt="Enter The Garden - 04">
+			<img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_5.webp" alt="Enter The Garden - 05">
+        </div>
+        <div class="ani-watch">
+            <div class="section-header">Смотреть онлайн</div>
+            <div class="alert">
+                <p><strong>Внимание!</strong> Уважаемые зрители, мы не продвигаем никакие продукты. Реклама которая может появиться при просмотре в плеерах не связана с нашим проектом, она предоставлена видеобалансерами, которые зарабатывают на рекламе и позволяют нам (агрегатору) размещать нашу озвучку бесплатно.</p>
+            </div>
+            
+            <!-- Блок плееров -->
+            <div class="buttonContainer">
+                <button data-id="#kodikIframe" class="select-plr active">Kodik</button>
+                <button data-id="#allvideoIframe" class="select-plr">AllVideo</button>
+                <button data-id="#sibnetIframe" class="select-plr">Sibnet</button>
+                <button data-id="#animeLibIframe" class="select-plr">AnimeLib</button>
+            </div>
+            
+            <div id="sibnetContainer" class="select-ep">
+                <label for="sibnetSeriesSelector"></label>
+                <select id="sibnetSeriesSelector">
+                    <option value="" disabled selected>Выбрать серию (Sibnet)</option>
+                    <option value="https://video.sibnet.ru/shell.php?videoid=5646232">Серия 1</option>
+                    <option value="https://video.sibnet.ru/shell.php?videoid=5846732">Серия 2</option>
+                </select>
+            </div>
+
+            <div id="animeLibContainer" class="select-ep">
+                <label for="animeLibSeriesSelector"></label>
+                <select id="animeLibSeriesSelector">
+                    <option value="" disabled selected>Выбрать серию (AnimeLib)</option>
+					<!-- <option value="https://test-front.anilib.me/iframe-player/?episodeId=125359&teamId=43038">Серия 1</option> -->
+                    <option value="https://anilib.me/iframe-player/?episodeId=125359&teamId=43038">Серия 1</option>
+                    <option value="https://anilib.me/iframe-player/?episodeId=127503&teamId=43038">Серия 2</option>
+                </select>
+            </div>
+
+            <div id="kodikIframe" class="iframeContainerPl active">
+                <iframe src="//aniqit.com/serial/61333/c242bf6e72a978a791de659f22aa06cb/720p?translations=false" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <div id="allvideoIframe" class="iframeContainerPl">
+                <iframe src="https://csst.online/playlist_iframe/26731/" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <div id="sibnetIframe" class="iframeContainerPl">
+                <iframe id="sibnetIframeLink" src="" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <div id="animeLibIframe" class="iframeContainerPl">
+                <iframe id="animeLibIframeLink" src="" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        
+        <div class="section-header">Над релизом работали</div>
+        <div class="teams">
+            <div class="team-member">
+                <img src="путь-к-аватарке" alt="Аватарка">
+                <div>
+                    <div class="team-member-name">Птахен</div>
+                    <div class="team-member-role">Озвучка • Тайминг и работа со звуком</div>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="путь-к-аватарке" alt="Аватарка">
+                <div>
+                    <div class="team-member-name">Mankkei</div>
+                    <div class="team-member-role">Озвучка</div>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="путь-к-аватарке" alt="Аватарка">
+                <div>
+                    <div class="team-member-name">Pinku_no_kauru</div>
+                    <div class="team-member-role">Озвучка</div>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="путь-к-аватарке" alt="Аватарка">
+                <div>
+                    <div class="team-member-name"><a href="https://vk.com/club182272237">Perevodildo (hokuto_san)</a></div>
+                    <div class="team-member-role">Перевод</div>
+                </div>
+            </div>
+        </div>
+        <div class="comments">
+            <div class="comments-header">Оставить комментарий</div>
+            <!-- Put this script tag to the <head> of your page -->
+            <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+            <script type="text/javascript">
+              VK.init({ apiId: 51904582, onlyWidgets: true });
+            </script>
+
+            <!-- Put this div tag to the place, where the Comments block will be -->
+            <div id="vk_comments"></div>
+            <script type="text/javascript">
+              VK.Widgets.Comments("vk_comments", {limit: 10, attach: "false"});
+            </script>
+        </div>
+    </div>
+    
+    <script>
+    // Переключение плеера
+    $('.select-plr').click(function () {
+        var that = $(this);
+        $('.select-plr').removeClass('active');
+        that.addClass('active');
+        var block = that.data('id');
+        $('.iframeContainerPl').removeClass('active');
+        $(block).addClass('active');
+        
+        // Скрыть селекторы эпизодов при выборе плеера Kodik или AllVideo
+        if (that.data('id') === '#kodikIframe' || that.data('id') === '#allvideoIframe') {
+            $('#sibnetContainer').removeClass('active');
+            $('#animeLibContainer').removeClass('active');
+        } 
+        // Показать селектор эпизодов для Sibnet'а и скрыть для AnimeLib'а при выборе плеера Sibnet
+        else if (that.data('id') === '#sibnetIframe') {
+            $('#sibnetContainer').addClass('active');
+            $('#animeLibContainer').removeClass('active');
+            
+            // Автоматически выбираем первую серию для Sibnet
+            $('#sibnetSeriesSelector').val($('#sibnetSeriesSelector option:eq(1)').val());
+            $('#sibnetIframeLink').attr('src', $('#sibnetSeriesSelector').val());
+        }
+        // Показать селектор эпизодов для AnimeLib'а и скрыть для Sibnet'а при выборе плеера AnimeLib
+        else if (that.data('id') === '#animeLibIframe') {
+            $('#sibnetContainer').removeClass('active');
+            $('#animeLibContainer').addClass('active');
+            
+            // Автоматически выбираем первую серию для AnimeLib
+            $('#animeLibSeriesSelector').val($('#animeLibSeriesSelector option:eq(1)').val());
+            $('#animeLibIframeLink').attr('src', $('#animeLibSeriesSelector').val());
+        }
+    });
+
+    // Переключение серий для плееров Sibnet и AnimeLib
+    $(function() {
+        // Sibnet
+        $('#sibnetSeriesSelector').change(function() {
+            var selectedEp = $(this).val();
+            $('#sibnetIframeLink').attr('src', selectedEp);
+        });
+        // AnimeLib
+        $('#animeLibSeriesSelector').change(function() {
+            var selectedEp = $(this).val();
+            $('#animeLibIframeLink').attr('src', selectedEp);
+        });
+    });
+</script>
+
+<!-- Модальное окно для полноэкранного просмотра -->
+<div id="imageModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImage">
+  <div id="caption"></div>
+</div>
+
+<script>
+// Полноэкранный просмотр изображений галереи
+document.querySelectorAll('.ani-gallery img').forEach(img => {
+  img.style.cursor = 'pointer';
+  img.addEventListener('click', function() {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const captionText = document.getElementById('caption');
+    
+    modal.style.display = 'block';
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+    
+    // Закрытие по клику на крестик
+    document.querySelector('.close').onclick = function() {
+      modal.style.display = 'none';
+    }
+    
+    // Закрытие по клику вне изображения
+    modal.onclick = function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    }
+    
+    // Закрытие по ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display === 'block') {
+        modal.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
+
+
+<!-- ФУТЕР САЙТА - НАЧАЛО -->
+  <footer>
+    <p>Материалы на этом сайте предназначены только для ознакомления.</p>
+    <p>В случаях нарушения авторских прав - обращайтесь на почту: <a href="mailto:support@ovnanime.ru">support@ovnanime.ru</a></p>
+    <p>&copy; 2023 — 2025 • Объект всеобщей ненависти</p>
+  </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.menu');
+        const html = document.documentElement;
+        
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            menu.classList.toggle('active');
+            
+            // Блокировка скролла при открытом меню
+            if (menu.classList.contains('active')) {
+                html.style.overflow = 'hidden';
+            } else {
+                html.style.overflow = '';
+            }
+        });
+        
+        // Закрытие меню при клике на пункт
+        const menuItems = document.querySelectorAll('.menu li a');
+        menuItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                // Проверяем, есть ли у ссылки href (не якорные ссылки)
+                if (this.getAttribute('href') && this.getAttribute('href') !== '#') {
+                    hamburger.classList.remove('active');
+                    menu.classList.remove('active');
+                    html.style.overflow = '';
+                }
+            });
+        });
+        
+        // Закрытие меню при клике вне его области
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.header-content') && menu.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                menu.classList.remove('active');
+                html.style.overflow = '';
+            }
+        });
+    });
+</script>
+
+<!-- ФУТЕР САЙТА - КОНЕЦ -->
+
+
+
+</body>
+</html>
