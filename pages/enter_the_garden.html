@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Войти в сад / Enter The Garden</title>
+    <title>ОВН | Войти в сад / Enter The Garden</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
     <style>
@@ -12,7 +12,7 @@
         }
         body {
             font-family: Arial, sans-serif;
-            background-color: #121212;
+            background-color: #131313;
             color: #fff;
             line-height: 1.6;
         }
@@ -41,14 +41,14 @@
         }
         .ani-description {
             display: flex;
-            gap: 20px;
+            gap: 30px;
         }
         .ani-poster {
-            position: relative;
-            max-width: 300px;
-		    margin: 0px auto;
+            display: block; 
+            width: 280px;
             height: auto;
-            object-fit: cover;
+		    margin: 0px auto;
+            object-fit: contain;
             border-radius: 0px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
@@ -67,15 +67,70 @@
         .ani-info-type {
             opacity: 50%;
         }
+        .ani-gallery-container {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 0px;
+        }
+
         .ani-gallery {
             display: flex;
             gap: 10px;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            cursor: grab;
+            padding-bottom: 10px;
+        }
+
+        .ani-gallery:active {
+            cursor: grabbing;
+        }
+
+        .ani-gallery img {
+            width: 280px;
+            height: 185px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            scroll-snap-align: center;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .ani-gallery::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .ani-gallery::-webkit-scrollbar-track {
+            background: #2c2c2c;
+            border-radius: 3px;
+        }
+
+        .ani-gallery::-webkit-scrollbar-thumb {
+            background: #505050;
+            border-radius: 3px;
+        }
+
+        .ani-gallery::-webkit-scrollbar-thumb:hover {
+            background: #707070;
+        }
+
+        @media (max-width: 768px) {
+            .ani-gallery img {
+                width: 180px;
+                height: 120px;
+            }
+    
+            .ani-gallery-container {
+                padding: 0 10px;
+            }
         }
         .ani-gallery img {
-            width: 200px;
-            height: 150px;
+            width: 280px;
+            height: 185px;
             object-fit: cover;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -218,7 +273,7 @@
         }
 
         .close:hover {
-            color: #ff6f61;
+            color: 131313;
         }
 
         
@@ -243,7 +298,7 @@
             }
 			
 			.ani-poster {
-			    max-width: 270px;
+			    max-width: 250px;
                 margin: 9px auto -10px auto;
             }
 			
@@ -361,14 +416,16 @@
                 </ul>
             </div>
         </div>
-        <div class="section-header">Кадры</div>
-        <div class="ani-gallery">
-            <img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_1.webp" alt="Enter The Garden - 01">
-            <img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_2.webp" alt="Enter The Garden - 02">
-            <img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_3.webp" alt="Enter The Garden - 03">
-			<img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_4.webp" alt="Enter The Garden - 04">
-			<img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_5.webp" alt="Enter The Garden - 05">
-        </div>
+            <div class="section-header">Кадры</div>
+            <div class="ani-gallery-container">
+                <div class="ani-gallery">
+                    <img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_1.webp" alt="Enter The Garden - 01">
+                    <img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_2.webp" alt="Enter The Garden - 02">
+                    <img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_3.webp" alt="Enter The Garden - 03">
+                    <img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_4.webp" alt="Enter The Garden - 04">
+                    <img loading="lazy" src="../assets/img/enter_the_garden/enter_the_garden_5.webp" alt="Enter The Garden - 05">
+                </div>
+            </div>
         <div class="ani-watch">
             <div class="section-header">Смотреть онлайн</div>
             <div class="alert">
@@ -418,7 +475,8 @@
                 <iframe id="animeLibIframeLink" src="" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
-        
+
+        <!-- КАСТ - Начало --
         <div class="section-header">Над релизом работали</div>
         <div class="teams">
             <div class="team-member">
@@ -450,6 +508,9 @@
                 </div>
             </div>
         </div>
+
+       !-- КАСТ - КОНЕЦ -->
+
         <div class="comments">
             <div class="comments-header">Оставить комментарий</div>
             <!-- Put this script tag to the <head> of your page -->
@@ -466,6 +527,47 @@
         </div>
     </div>
     
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const gallery = document.querySelector('.ani-gallery');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    gallery.addEventListener('mousedown', (e) => {
+        isDown = true;
+        gallery.classList.add('active');
+        startX = e.pageX - gallery.offsetLeft;
+        scrollLeft = gallery.scrollLeft;
+    });
+
+    gallery.addEventListener('mouseleave', () => {
+        isDown = false;
+        gallery.classList.remove('active');
+    });
+
+    gallery.addEventListener('mouseup', () => {
+        isDown = false;
+        gallery.classList.remove('active');
+    });
+
+    gallery.addEventListener('mousemove', (e) => {
+        if(!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - gallery.offsetLeft;
+        const walk = (x - startX) * 2; // Умножаем для более быстрого скролла
+        gallery.scrollLeft = scrollLeft - walk;
+    });
+
+    // Отключаем перетаскивание изображений
+    gallery.querySelectorAll('img').forEach(img => {
+        img.addEventListener('dragstart', (e) => {
+            e.preventDefault();
+        });
+    });
+});
+</script>
+
     <script>
     // Переключение плеера
     $('.select-plr').click(function () {
@@ -524,37 +626,37 @@
 </div>
 
 <script>
-// Полноэкранный просмотр изображений галереи
-document.querySelectorAll('.ani-gallery img').forEach(img => {
-  img.style.cursor = 'pointer';
-  img.addEventListener('click', function() {
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImage');
-    const captionText = document.getElementById('caption');
-    
-    modal.style.display = 'block';
-    modalImg.src = this.src;
-    captionText.innerHTML = this.alt;
-    
-    // Закрытие по клику на крестик
-    document.querySelector('.close').onclick = function() {
-      modal.style.display = 'none';
-    }
-    
-    // Закрытие по клику вне изображения
-    modal.onclick = function(e) {
-      if (e.target === modal) {
-        modal.style.display = 'none';
-      }
-    }
-    
-    // Закрытие по ESC
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modal.style.display === 'block') {
-        modal.style.display = 'none';
-      }
+// Полноэкранный просмотр изображений галереи и постера
+document.querySelectorAll('.ani-gallery img, .ani-poster').forEach(img => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', function() {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const captionText = document.getElementById('caption');
+        
+        modal.style.display = 'block';
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+        
+        // Закрытие по клику на крестик
+        document.querySelector('.close').onclick = function() {
+            modal.style.display = 'none';
+        }
+        
+        // Закрытие по клику вне изображения
+        modal.onclick = function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        // Закрытие по ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+            }
+        });
     });
-  });
 });
 </script>
 
