@@ -94,6 +94,8 @@ nav {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  height: 48px;
+  align-items: center;
 }
 
 .menu li {
@@ -483,4 +485,40 @@ footer {
     font-size: 16px;
   }
 }
+
+/* Фикс для Firefox */
+@-moz-document url-prefix() {
+    .hamburger span {
+        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+}
+
+/* Фикс для старых версий Edge */
+@supports (-ms-ime-align:auto) {
+    .hamburger span {
+        transition: none;
+    }
+    .hamburger.active span {
+        transition: all 0.3s ease;
+    }
+}
+
+/* Фиксы для Brave */
+.hamburger::-moz-focus-inner {
+    border: 0;
+}
+
+.hamburger span {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+@supports (-webkit-touch-callout: none) {
+    /* Специфичные стили для WebKit (Brave на iOS) */
+    .hamburger {
+        -webkit-user-select: none;
+    }
+    .menu {
+        -webkit-overflow-scrolling: touch;
+    }
 }
