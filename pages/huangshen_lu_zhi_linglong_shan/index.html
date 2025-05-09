@@ -517,11 +517,11 @@
             </div>
 
             <div id="sibnetIframe" class="iframeContainerPl">
-                <iframe id="sibnetIframeLink" src="https://video.sibnet.ru/shell.php?videoid=5906611" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+                <iframe id="sibnetIframeLink" src="" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
             </div>
 
             <div id="animeLibIframe" class="iframeContainerPl">
-                <iframe id="animeLibIframeLink" src="https://anilib.me/iframe-player/?episodeId=129207&teamId=43038" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+                <iframe id="animeLibIframeLink" src="" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
         <!-- БЛОК ПЛЕЕРОВ - КОНЕЦ -->
@@ -615,54 +615,70 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	
 <!-- СКРИПТ ПЕРЕКЛЮЧЕНИЯ ПЛЕЕРА - НАЧАЛО -->
-    <script>
-    // Переключение плеера
-    $('.select-plr').click(function () {
+   <script>
+$(document).ready(function() {
+    // Функция для переключения плееров
+    $('.select-plr').click(function() {
+        // 1. Управление активными кнопками плееров
         var that = $(this);
-        $('.select-plr').removeClass('active');
-        that.addClass('active');
-        var block = that.data('id');
-        $('.iframeContainerPl').removeClass('active');
-        $(block).addClass('active');
+        $('.select-plr').removeClass('active'); // Снимаем активность со всех кнопок
+        that.addClass('active'); // Делаем текущую кнопку активной
         
-        // Скрыть селекторы эпизодов при выборе плеера Kodik или AllVideo
+        // 2. Переключение контейнеров с плеерами
+        var block = that.data('id'); // Получаем ID плеера из data-атрибута
+        $('.iframeContainerPl').removeClass('active'); // Скрываем все плееры
+        $(block).addClass('active'); // Показываем выбранный плеер
+        
+        // 3. Обработка разных типов плееров
+        // Для Kodik/AllVideo просто скрываем селекторы серий
         if (that.data('id') === '#kodikIframe' || that.data('id') === '#allvideoIframe') {
-            $('#sibnetContainer').removeClass('active');
-            $('#animeLibContainer').removeClass('active');
+            $('#sibnetContainer, #animeLibContainer').removeClass('active');
         } 
-        // Показать селектор эпизодов для Sibnet'а и скрыть для AnimeLib'а при выборе плеера Sibnet
+        
+        // Для Sibnet
         else if (that.data('id') === '#sibnetIframe') {
+            // Показываем только селектор Sibnet
             $('#sibnetContainer').addClass('active');
             $('#animeLibContainer').removeClass('active');
             
-            // Автоматически выбираем первую серию для Sibnet
-            $('#sibnetSeriesSelector').val($('#sibnetSeriesSelector option:eq(1)').val());
-            $('#sibnetIframeLink').attr('src', $('#sibnetSeriesSelector').val());
-        }
-        // Показать селектор эпизодов для AnimeLib'а и скрыть для Sibnet'а при выборе плеера AnimeLib
+            // Если плеер еще не загружался, загружаем первую серию
+            if ($('#sibnetIframeLink').attr('src') === '') {
+                $('#sibnetSeriesSelector').val($('#sibnetSeriesSelector option:eq(1)').val());
+                $('#sibnetIframeLink').attr('src', $('#sibnetSeriesSelector').val());
+            }
+        } 
+        
+        // Для AnimeLib
         else if (that.data('id') === '#animeLibIframe') {
+            // Показываем только селектор AnimeLib
             $('#sibnetContainer').removeClass('active');
             $('#animeLibContainer').addClass('active');
             
-            // Автоматически выбираем первую серию для AnimeLib
-            $('#animeLibSeriesSelector').val($('#animeLibSeriesSelector option:eq(1)').val());
-            $('#animeLibIframeLink').attr('src', $('#animeLibSeriesSelector').val());
+            // Если плеер еще не загружался, загружаем первую серию
+            if ($('#animeLibIframeLink').attr('src') === '') {
+                $('#animeLibSeriesSelector').val($('#animeLibSeriesSelector option:eq(1)').val());
+                $('#animeLibIframeLink').attr('src', $('#animeLibSeriesSelector').val());
+            }
         }
     });
 
-    // Переключение серий для плееров Sibnet и AnimeLib
-    $(function() {
-        // Sibnet
-        $('#sibnetSeriesSelector').change(function() {
-            var selectedEp = $(this).val();
-            $('#sibnetIframeLink').attr('src', selectedEp);
-        });
-        // AnimeLib
-        $('#animeLibSeriesSelector').change(function() {
-            var selectedEp = $(this).val();
-            $('#animeLibIframeLink').attr('src', selectedEp);
-        });
+    // Обработчики изменения серий
+    $('#sibnetSeriesSelector').change(function() {
+        $('#sibnetIframeLink').attr('src', $(this).val());
     });
+    
+    $('#animeLibSeriesSelector').change(function() {
+        $('#animeLibIframeLink').attr('src', $(this).val());
+    });
+
+    // Автозагрузка первой серии при открытии страницы (если активен Sibnet/AnimeLib)
+    if ($('#sibnetIframe').hasClass('active')) {
+        $('#sibnetIframeLink').attr('src', $('#sibnetSeriesSelector option:eq(1)').val());
+    }
+    if ($('#animeLibIframe').hasClass('active')) {
+        $('#animeLibIframeLink').attr('src', $('#animeLibSeriesSelector option:eq(1)').val());
+    }
+});
 </script>
 <!-- СКРИПТ ПЕРЕКЛЮЧЕНИЯ ПЛЕЕРА - КОНЕЦ -->
 	
