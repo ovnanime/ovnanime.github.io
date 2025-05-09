@@ -691,14 +691,21 @@ $(document).ready(function() {
     $('#sibnetSeriesSelector').change(function() {
         $('#sibnetIframeLink').attr('src', $(this).val());
     });
-    
+
+    $('#plvideoSeriesSelector').change(function() {
+        $('#plvideoIframeLink').attr('src', $(this).val());
+    });
+	
     $('#animeLibSeriesSelector').change(function() {
         $('#animeLibIframeLink').attr('src', $(this).val());
     });
-
+	
     // Автозагрузка первой серии при открытии страницы (если активен Sibnet/AnimeLib)
     if ($('#sibnetIframe').hasClass('active')) {
         $('#sibnetIframeLink').attr('src', $('#sibnetSeriesSelector option:eq(1)').val());
+    }
+    if ($('#plvideoIframe').hasClass('active')) {
+        $('#plvideoIframeLink').attr('src', $('#plvideoSeriesSelector option:eq(1)').val());
     }
     if ($('#animeLibIframe').hasClass('active')) {
         $('#animeLibIframeLink').attr('src', $('#animeLibSeriesSelector option:eq(1)').val());
