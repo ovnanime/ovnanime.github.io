@@ -121,9 +121,6 @@
             -webkit-overflow-scrolling: touch;
             cursor: grab;
             padding-bottom: 10px;
-	    -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
-            scroll-snap-type: x mandatory;    /* Привязка к изображениям при скролле */
-            overscroll-behavior-x: contain;   /* Предотвращает "подёргивание" страницы */
         }
 
         .ani-gallery:active {
@@ -139,7 +136,6 @@
             scroll-snap-align: center;
             flex-shrink: 0;
             user-select: none;
-	    scroll-snap-align: center;
         }
 
         .ani-gallery::-webkit-scrollbar {
