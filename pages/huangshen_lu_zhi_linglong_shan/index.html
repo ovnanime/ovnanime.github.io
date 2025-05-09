@@ -477,15 +477,11 @@
 
 	
         <!-- БЛОК ПЛЕЕРОВ - НАЧАЛО -->
-        <div class="ani-watch">
-            <div class="section-header">Смотреть онлайн</div>
-            <div class="alert">
-                <p><strong>Внимание!</strong> Уважаемые зрители, мы не продвигаем никакие продукты. Реклама которая может появиться при просмотре в плеерах не связана с нашим проектом, она предоставлена видеобалансерами, которые зарабатывают на рекламе и позволяют нам (агрегатору) размещать нашу озвучку бесплатно.</p>
-            </div>
             <div class="buttonContainer">
                 <button data-id="#kodikIframe" class="select-plr active">Kodik</button>
                 <button data-id="#allvideoIframe" class="select-plr">AllVideo</button>
                 <button data-id="#sibnetIframe" class="select-plr">Sibnet</button>
+                <button data-id="#plvideoIframe" class="select-plr">PlVideo</button>
                 <button data-id="#animeLibIframe" class="select-plr">AnimeLib</button>
             </div>
             
@@ -493,8 +489,17 @@
                 <label for="sibnetSeriesSelector"></label>
                 <select id="sibnetSeriesSelector">
                     <option value="" disabled selected>Выбрать серию</option>
-                    <option value="https://video.sibnet.ru/shell.php?videoid=5906611">Серия 1</option>
+                    <option value="https://video.sibnet.ru/shell.php?videoid=5906301">Серия 1</option>
                     <!-- <option value="https://video.sibnet.ru/shell.php?videoid=5846732">Серия 2</option> -->
+                </select>
+            </div>
+
+            <div id="plvideoContainer" class="select-ep">
+                <label for="plvideoSeriesSelector"></label>
+                <select id="plvideoSeriesSelector">
+                    <option value="" disabled selected>Выбрать серию</option>
+                    <option value="https://plvideo.ru/embed/vaMulR2XaICl">Серия 1</option>
+                    <!-- <option value="https://plvideo.ru/video.php?vid=example2">Серия 2</option> -->
                 </select>
             </div>
 
@@ -502,9 +507,8 @@
                 <label for="animeLibSeriesSelector"></label>
                 <select id="animeLibSeriesSelector">
                     <option value="" disabled selected>Выбрать серию</option>
-					<!-- <option value="https://test-front.anilib.me/iframe-player/?episodeId=125359&teamId=43038">Серия 1</option> -->
+		    <!-- <option value="https://test-front.anilib.me/iframe-player/?episodeId=125359&teamId=43038">Серия 1</option> -->
                     <option value="https://anilib.me/iframe-player/?episodeId=129207&teamId=43038">Серия 1</option>
-		    <option value="https://plvideo.ru/playlist?list=67OBuhagS7Bd">PlVideo</option>
                     <!-- <option value="https://anilib.me/iframe-player/?episodeId=127503&teamId=43038">Серия 2</option> -->
                 </select>
             </div>
@@ -519,6 +523,10 @@
 
             <div id="sibnetIframe" class="iframeContainerPl">
                 <iframe id="sibnetIframeLink" src="" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <div id="plvideoIframe" class="iframeContainerPl">
+                <iframe id="plvideoIframeLink" src="" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
             </div>
 
             <div id="animeLibIframe" class="iframeContainerPl">
@@ -641,6 +649,7 @@ $(document).ready(function() {
             // Показываем только селектор Sibnet
             $('#sibnetContainer').addClass('active');
             $('#animeLibContainer').removeClass('active');
+	    $('#plvideoContainer').removeClass('active');
             
             // Если плеер еще не загружался, загружаем первую серию
             if ($('#sibnetIframeLink').attr('src') === '') {
@@ -648,12 +657,27 @@ $(document).ready(function() {
                 $('#sibnetIframeLink').attr('src', $('#sibnetSeriesSelector').val());
             }
         } 
-        
+
+        // Для PlVideo
+        else if (that.data('id') === '#plvideoIframe') {
+            // Показываем только селектор PlVideo
+            $('#sibnetContainer').removeClass('active');
+            $('#animeLibContainer').removeClass('active');
+            $('#plvideoContainer').addClass('active');
+		
+            // Если плеер еще не загружался, загружаем первую серию
+            if ($('#plvideoIframeLink').attr('src') === '') {
+                $('#plvideoSeriesSelector').val($('#plvideoSeriesSelector option:eq(1)').val());
+                $('#plvideoIframeLink').attr('src', $('#plvideoSeriesSelector').val());
+            }
+        }
+		
         // Для AnimeLib
         else if (that.data('id') === '#animeLibIframe') {
             // Показываем только селектор AnimeLib
             $('#sibnetContainer').removeClass('active');
             $('#animeLibContainer').addClass('active');
+     	    $('#plvideoContainer').removeClass('active');
             
             // Если плеер еще не загружался, загружаем первую серию
             if ($('#animeLibIframeLink').attr('src') === '') {
