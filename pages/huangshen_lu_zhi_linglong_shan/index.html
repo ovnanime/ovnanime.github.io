@@ -578,7 +578,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let startX;
     let scrollLeft;
 
-    // Обработчики для мыши
     gallery.addEventListener('mousedown', (e) => {
         isDown = true;
         gallery.classList.add('active');
@@ -597,35 +596,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     gallery.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
+        if(!isDown) return;
         e.preventDefault();
         const x = e.pageX - gallery.offsetLeft;
-        const walk = (x - startX) * 2;
+        const walk = (x - startX) * 2; // Умножаем для более быстрого скролла
         gallery.scrollLeft = scrollLeft - walk;
     });
 
-    // Обработчики для тач-устройств
-    gallery.addEventListener('touchstart', (e) => {
-        isDown = true;
-        gallery.classList.add('active');
-        startX = e.touches[0].pageX - gallery.offsetLeft;
-        scrollLeft = gallery.scrollLeft;
-    });
-
-    gallery.addEventListener('touchend', () => {
-        isDown = false;
-        gallery.classList.remove('active');
-    });
-
-    gallery.addEventListener('touchmove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.touches[0].pageX - gallery.offsetLeft;
-        const walk = (x - startX) * 2;
-        gallery.scrollLeft = scrollLeft - walk;
-    });
-
-    // Запрет перетаскивания изображений
+    // Отключаем перетаскивание изображений
     gallery.querySelectorAll('img').forEach(img => {
         img.addEventListener('dragstart', (e) => {
             e.preventDefault();
