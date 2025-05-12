@@ -542,19 +542,6 @@ footer {
             color: #fff;
             line-height: 1.6;
         }
-
-          .text-content {
-            color: #fff;
-            text-align: justify;
-            padding-left: 0;
-            margin: 0;
-          }
-          .text-content p {
-	    text-align: justify;
-            text-indent: 1.5em;
-            margin: 0 0 1em 0;
-          }
-
         h1, h2, h3, h4, h5, h6 {
             margin-bottom: 10px;
             font-weight: bold;
