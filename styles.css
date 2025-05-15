@@ -126,7 +126,7 @@ nav {
 .cover {
   width:75%;
   overflow: hidden;
-  margin: 40px auto 0px;
+  margin: -35px auto 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,6 +155,7 @@ h1 {
   gap: 10px;
   justify-content: center;
   width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
