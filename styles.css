@@ -154,7 +154,7 @@ h1 {
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   justify-content: center;
-  max-width: 1200px;
+  width: 90%;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -342,7 +342,6 @@ footer a:hover {
   }
 
   .dubbing-grid, .voiceover-grid {
-	width: 90%;
     grid-template-columns: repeat(2, 1fr);
     padding: 0 10px;
   }
