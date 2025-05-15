@@ -335,17 +335,14 @@ footer a:hover {
 
   h1 {
     font-size: 24px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-  }
-
-  .main-content {
-    padding: 0 15px 60px; /* Меньшие отступы на мобильных */
+    margin-top: 40px;
+    margin-bottom: 0px;
   }
 
   .dubbing-grid, .voiceover-grid {
-	width: 110%;
+	width: 100%;
     grid-template-columns: repeat(2, 1fr);
+	margin-top: 20px;
     padding: 0 10px;
   }
 
