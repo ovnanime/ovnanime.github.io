@@ -23,17 +23,12 @@ body {
 .main-content {
   flex: 1;
   width: 100%;
-  max-width: 1200px; /* Ограничиваем максимальную ширину */
-  margin: 0 auto; /* Центрируем контент */
-  padding: 0 20px 60px; /* Добавляем боковые отступы и нижний отступ */
-  box-sizing: border-box; /* Учитываем padding в общей ширине */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  box-sizing: border-box;
 }
 
-main {
-  padding: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
 
 img {
     max-width: 100%;
@@ -129,7 +124,7 @@ nav {
 }
 
 .cover {
-  width: 50%;
+  width:75%;
   overflow: hidden;
   margin: 40px auto 0px;
   display: flex;
@@ -159,6 +154,9 @@ h1 {
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .dubbing-item, .voiceover-item {
@@ -204,8 +202,11 @@ footer a:hover {
   color: #fff;
 }
 
-
-
+@media (max-width: 1200px) {
+  .dubbing-grid, .voiceover-grid {
+    padding: 0 15px;
+  }
+}
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .header {
@@ -340,9 +341,10 @@ footer a:hover {
     padding: 0 15px 60px; /* Меньшие отступы на мобильных */
   }
 
-  .dubbing-grid,
-  .voiceover-grid {
+  .dubbing-grid, .voiceover-grid {
+	width: 90%;
     grid-template-columns: repeat(2, 1fr);
+    padding: 0 10px;
   }
 
   .dubbing-item img, .voiceover-item img {
