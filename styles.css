@@ -402,22 +402,37 @@ footer {
 
 /* Оптимизация для очень маленьких экранов */
 @media (max-width: 480px) {
+  .logo {
+    display: flex;
+    align-items: center; /* Выравниваем по центру по вертикали */
+    flex-wrap: wrap;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .logo img {
+    height: 36px;
+    width: 36px;
+    margin-right: 8px;
+    align-self: center; /* Центрируем логотип */
+  }
+
   .logo span {
-    font-size: 18px;
-    line-height: 1.3;
-  }
-  
-  .logo span {
-    font-size: 18px;
-  }
-  
-  .header-content {
-    padding: 10px 30px;
-  }
-  
-  .menu li a {
-    padding: 10px;
     font-size: 16px;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: calc(100% - 44px);
+    line-height: 1.2;
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle; /* Добавляем вертикальное выравнивание */
+    margin-top: 0; /* Убираем предыдущую корректировку */
+    align-self: center; /* Центрируем текст */
+  }
+
+  .hamburger {
+    margin-left: 8px;
+    align-self: center; /* Центрируем гамбургер */
   }
 }
 
