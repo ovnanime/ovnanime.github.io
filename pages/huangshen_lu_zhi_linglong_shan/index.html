@@ -63,7 +63,7 @@
 	  "video": {
 	    "@type": "VideoObject",
  	   "name": "Летопись опустошённого бога...",
-  	  "embedUrl": "https://www.youtube.com/embed/..." // Используйте трейлер
+  	  "embedUrl": "https://youtu.be/t1LanmuyVRg?si=E6GmOIB8c1fl25Pl"
 	  }
     }
     </script>
@@ -199,9 +199,10 @@
                 </div>
             </div>
         <div class="ani-watch">
-            <div class="section-header">Для просмотра выбирите плеер</div>
+            <div class="section-header">Только для ознакомительного просмотра!</div>
             <div class="alert">
-                <p><strong>Внимание!</strong> Уважаемые зрители, мы не продвигаем никакие продукты. Реклама которая может появиться при просмотре в плеерах не связана с нашим проектом, она предоставлена видеобалансерами, которые зарабатывают на рекламе и позволяют нам (агрегатору) размещать нашу озвучку бесплатно.</p>
+                <p><strong>Внимание!</strong> Контент предоставлен для ознакомительных целей. Права на исходный материал принадлежат Niceboat Animation. После просмотра рекомендуем приобрести лицензию на официальных платформах. <a href="https://www.niceboat.com/" target="_blank">Официальный сайт студии</a></p>
+                <p> Уважаемые зрители, мы не продвигаем никакие продукты. Реклама которая может появиться при просмотре в плеерах не связана с нашим проектом, она предоставлена видеобалансерами, которые зарабатывают на рекламе и позволяют нам (агрегатору) размещать нашу озвучку бесплатно.</p>
             </div>
 			
 		    <div class="noindex">
@@ -341,6 +342,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <script>
+
+$('.select-plr').click(function() {
+  const iframe = $(this).data('id') + ' iframe';
+  if ($(iframe).attr('src') === '') {
+    $(iframe).attr('src', $(iframe).data('lazy-src'));
+  }
+});
+
 $(document).ready(function() {
     // Функция для переключения плееров
     $('.select-plr').click(function() {
