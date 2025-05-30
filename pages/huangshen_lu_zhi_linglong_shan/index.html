@@ -242,23 +242,23 @@
             </div>
 
             <div id="kodikIframe" class="iframeContainerPl active">
-                <iframe data-lazy-src="//aniqit.com/serial/67267/ff9c8bf3aa5466f26973804c87c31fb5/720p?translations=false" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+                <iframe src="//aniqit.com/serial/67267/ff9c8bf3aa5466f26973804c87c31fb5/720p?translations=false" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
             </div>
 
             <div id="allvideoIframe" class="iframeContainerPl">
-                <iframe data-lazy-src="https://csst.online/playlist_iframe/29593/" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://csst.online/playlist_iframe/29593/" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
             </div>
 
             <div id="sibnetIframe" class="iframeContainerPl">
-                <iframe id="sibnetIframeLink" data-lazy-src="" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+                <iframe id="sibnetIframeLink" src="" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
             </div>
 
             <div id="plvideoIframe" class="iframeContainerPl">
-                <iframe id="plvideoIframeLink" data-lazy-src="" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+                <iframe id="plvideoIframeLink" src="" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
             </div>
 
             <div id="animeLibIframe" class="iframeContainerPl">
-                <iframe id="animeLibIframeLink" data-lazy-src="" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+                <iframe id="animeLibIframeLink" src="" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
             </div>
 			</div>
         </div>
@@ -342,6 +342,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <script>
+
+$('.select-plr').click(function() {
+  const iframe = $(this).data('id') + ' iframe';
+  if ($(iframe).attr('src') === '') {
+    $(iframe).attr('src', $(iframe).data('lazy-src'));
+  }
+});
+
 $(document).ready(function() {
     // Функция для переключения плееров
     $('.select-plr').click(function() {
