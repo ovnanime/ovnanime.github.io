@@ -60,6 +60,13 @@ a:hover {
   color: #87ceeb;
 }
 
+.noindex {
+  position: absolute;
+  left: -9999px;
+  height: 0;
+  overflow: hidden;
+}
+
 /* Стили для шапки (header) */
 header {
     background-color: #131313;
