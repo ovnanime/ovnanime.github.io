@@ -61,9 +61,10 @@ a:hover {
 }
 
 .noindex {
-  position: absolute;
-  left: -9999px;
-  height: 0;
+  position: relative;
+  z-index: -1;
+  opacity: 0.01;
+  height: 1px;
   overflow: hidden;
 }
 
