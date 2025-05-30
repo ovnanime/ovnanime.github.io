@@ -61,6 +61,7 @@ a:hover {
 }
 
 .noindex {
+  background: red; /* Уберите после теста */
   position: absolute;
   width: 1px;
   height: 1px;
